@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Loco for Local: A Local Vendor Locator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+Buying locally has become increasingly popular over the years. Whether you live in the area or are travelling looking for that unique stop Local vendors and Artists have proven to be a trendy and environmentally conscience choice. This gives people the chance to get out and explore and provide support to small businesses. 
 
-## Available Scripts
+This is a MERN stack single-page REACT app that uses NoSQL databases and a mobile first design.
+___
 
-In the project directory, you can run:
+## Talbe of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Links](#links)
+* [Tests](#tests)
+* [Credits](#credits)
+* [License](#license)
+* [User Story](#user-story)
+___
 
-### `npm start`
+## Installation
+{{{Clone the repository from GitHub to your local machine. In the command line type `npm install` to install the dependencies and `npm run develop` from the root of the project to run the server.}}}
+___
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
+This application will allow users to search for local vendors while travelling across Canada. As a logged in user, they will be able to save vendors to their favourites as well as rate the vendors. Businesses will also have the option of signing up to have their local business be incorporated in our database.
+![screenshot](./assets/)
+___
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Links
+* [Deployed Application]()
+___
 
-### `npm test`
+## Tests
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+___
 
-### `npm run build`
+## Credits
+* Completed by: [Nell-GitHub](https://github.com/ShannonNell)
+* Completed by: [Hadad-GitHub]()
+* Completed by: [Azz-GitHub]()
+* Completed by: [Mango-GitHub]()
+___
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[MIT License](https://choosealicense.com/licenses/mit/)    
+___
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## User Story
+```
+AS a travel enthusiast and lover of locally made products
+I WANT to have an easy way to find and access local vendors/activities
+SO THAT I can support the local places in the communities I travel to
 
-### `npm run eject`
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Criteria: 
+```
+GIVEN a local vendors application
+WHEN I view the homepage
+THEN a page loads with a map [of the world, of my current location] prepopulated with local vendors 
+WHEN I click the filter button
+THEN I am able to choose to filter the local vendors by [farmers markets, festivals, location] to get more specific results
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+WHEN I click on one of the vendors icons
+THEN I am [taken to a new page, a modal appears] where I can view information specific about the vendor such as vendor name,  image, website link, reviews, and hours of operation, [prices of product]
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+WHEN I click sign up
+THEN I am taken to a page to sign up for the website
+WHEN I click login
+THEN I am taken to my dashboard which will show [my info → Name, image, location, bio | my vendors → favourites, on map or list format, as well as my reviews (star rating)] 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+WHEN I am logged in
+THEN I can save vendors to my favourites list as well as add my own rating [and comments on my thoughts about the vendor]
+WHEN  I click on my vendors
+THEN I can view the vendor’s information as well as update my review or delete the vendor from my list
 
-## Learn More
+WHEN I click on [add a vendor]
+THEN I am taken to a new page where, as a local business, I can add my local business to the database
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[WHEN I click the donation link
+THEN I am taken to a page where I can choose a local charity to donate to]
+```
