@@ -1,4 +1,7 @@
 import './App.css';
+import LoginButton from './components/login';
+import LogoutButton from './components/logout';
+import Profile from './components/profile';
 import React from 'react';
 import * as parksData from "./data/skateboard-parks.json"
 
@@ -21,7 +24,7 @@ import mapStyles from './mapStyles';
 // set up options to pass to the googlemaps component (to avoid rerendering)
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: "50%",
+  width: "90%",
   height: "50%"
 };
 
@@ -32,7 +35,7 @@ const center = {
 };
 
 const options = {
-  styles: mapStyles,
+  // styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 }
@@ -50,6 +53,9 @@ function App() {
 
   return (
     <div className="container">
+      <LoginButton />
+      <LogoutButton />
+      <Profile />
       <GoogleMap
         mapContainerStyle ={mapContainerStyle}
         zoom = {10}
