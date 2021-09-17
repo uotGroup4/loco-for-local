@@ -1,0 +1,150 @@
+[
+    {
+        "title": "Just Simply Wood",
+        "image": "",
+        "website": "www.justsimplywood.ca",
+        "location": "Komoka, ON",
+        "description": "Luxuriously sculpted woodenware."
+    },
+    {
+        "title": "NAMCOR Laser Services",
+        "image": "",
+        "website": "https://www.namcorlaserservices.com/",
+        "location": "5703 Egremont Drive Ilderton ON",
+        "description": "Metal art home decor."
+    },
+    {
+        "title": "Kim Drosdick Jewellery",
+        "image": "",
+        "website": "www.kimdrosdick.com",
+        "location": "49 Roncesvalles Ave. Toronto",
+        "description": "Ethical fine jewellery."
+    },
+    {
+        "title": "Kings Crown",
+        "image": "",
+        "website": "https://www.kingscrown1774.com/",
+        "location": [
+            "2901 Bayview Ave North York, Ontario M2K 1E6",
+            "5th Floor 176 Yonge St, Toronto, Ontario M5C 2L7"
+        ],
+        "description": "Men's grooming and lifestyle gifts."
+    },
+    {
+        "title": "Cacticus",
+        "image": "",
+        "website": "https://cacticus.ca/",
+        "location": [
+            "31 Lakeshore Road East, Oakville ON",
+            "2978 Dundas St. West, Toronto",
+            "187 Highbourne Rd, Toronto",
+            "218 Locke St. S, Hamilton, ON"
+        ],
+        "description": "Handmade concrete planters."
+    },
+    {
+        "title": "Atelier Cocotte",
+        "image": "",
+        "website": "www.ateliercocotte.com",
+        "location": "2065 Rue Parthenais #276, Montréal, QC H2K 3T2",
+        "description": "Unique wood lighting store."
+    },
+    {
+        "title": "Blush & Raven",
+        "image": "",
+        "website": "https://www.blushandraven.com",
+        "location": "1118 12 Ave SW #103, Calgary, AB T2R 0J5",
+        "description": "Bridal boutique."
+    },
+    {
+        "title": "Brandon T. Brown Wilderness Gallery",
+        "image": "",
+        "website": "https://brandontbrown.com/",
+        "location": "211 Bear St #108, Banff, AB T1W 3L3",
+        "description": "Canadian Rockies wildlife photographer."
+    },
+    {
+        "title": "BBxCollection",
+        "image": "",
+        "website": "https://www.bbxcollection.com/",
+        "location": "31 York St, Ottawa, ON K1N 5S7",
+        "description": "What's in a tee? Everything."
+    },
+    {
+        "title": "KEYLIME Athletic Wear",
+        "image": "",
+        "website": "https://keylimeathleticwear.com/",
+        "location": "2693 Broadmoor Blvd #100, Sherwood Park, AB T8H 0G1",
+        "description": "Athletic wear for women, men, and teens of all shapes and sizes."
+    },
+    {
+        "title": "MNR Beauty Boutique",
+        "image": "",
+        "website": "http://www.mnrbeautyboutique.com/",
+        "location": "323 McLeod Ave #201, Spruce Grove, AB T7X 0J6",
+        "description": "Beauty, apparel, and accessories."
+    },
+    {
+        "title": "The SPORT Gallery",
+        "image": "",
+        "website": "https://thesportgallery.ca/",
+        "location": "15 Tank House Lane, Toronto, ON M5A 3C4",
+        "description": "Classic sports apparel and photography."
+    },
+    {
+        "title": "Source Organics",
+        "image": "",
+        "website": "https://sourceorganics.com/",
+        "location": "34 Vaughan Rd, Toronto, ON M6G 2N3",
+        "description": "Luxurious, non-toxic, organic, natural makeup and skincare."
+    },
+    {
+        "title": "Blumseed",
+        "image": "",
+        "website": "https://www.blumseed.com/",
+        "location": "45 Wicksteed Ave #280, Toronto, ON M4H 4H9",
+        "description": "Organic, chemically free hair care products."
+    },
+    {
+        "title": "Wychbury Ave Soap Shop",
+        "image": "",
+        "website": "https://www.wychburyave.com/",
+        "location": "1011 Wychbury Ave, Victoria, BC V9A 5K7",
+        "description": "Handmade soaps and body products."
+    },
+    {
+        "title": "",
+        "image": "",
+        "website": "",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "",
+        "image": "",
+        "website": "",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "",
+        "image": "",
+        "website": "",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "",
+        "image": "",
+        "website": "",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "",
+        "image": "",
+        "website": "",
+        "location": "",
+        "description": ""
+    }
+]

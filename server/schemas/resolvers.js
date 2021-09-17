@@ -27,6 +27,7 @@ const resolvers = {
         // Get all vendors query
         vendors: async () => {
             return Vendor.find()
+            // It'd be nice to sort by alphabetical perhaps
         },
         // Get single vendor by id
         vendor: async (parent, { _id }) => {
