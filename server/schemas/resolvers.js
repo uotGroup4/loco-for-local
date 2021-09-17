@@ -1,5 +1,5 @@
 // const { AuthenticationError } = require('apollo-server-express');
-// const { User } = require('../models');
+const { User, Vendor } = require('../models');
 // const { signToken } = require('../utils/auth');
 
 
@@ -13,9 +13,27 @@ const resolvers = {
                 return userData;
             }
             // throw new AuthenticationError('Not logged in');
+        },
+        // get all users
+        users: async () => {
+            return User.find()
+                .select('-__v -password')
+        },
+        // get user by username
+        user: async (parent, { username }) => {
+            return User.findOne({ username })
+                .select('-__v -password')
+        },
+        // Get all vendors query
+        vendors: async () => {
+            return Vendor.find()
+        },
+        // Get single vendor by id
+        vendor: async (parent, { _id }) => {
+            return Vendor.findOne({ _id });
         }
     },
-    
+
     Mutation: {
         // Sign up/ Add a user
         addUser: async (parent, args) => {
@@ -28,20 +46,20 @@ const resolvers = {
         // Login user
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
-      
+
             if (!user) {
-              throw new AuthenticationError('Incorrect credentials');
+                throw new AuthenticationError('Incorrect credentials');
             }
-      
+
             const correctPw = await user.isCorrectPassword(password);
-      
+
             if (!correctPw) {
-              throw new AuthenticationError('Incorrect credentials');
+                throw new AuthenticationError('Incorrect credentials');
             }
-      
+
             const token = signToken(user);
             return { token, user };
-          },
+        },
 
         // Update user??
 
@@ -53,7 +71,7 @@ const resolvers = {
                     { $push: { saveVendor: input } },
                     { new: true }
                 );
-                
+
                 return updatedUser;
             }
 

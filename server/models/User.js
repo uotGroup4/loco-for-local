@@ -49,8 +49,8 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 // when we query a user, we'll also get another field called `vendorCount` with the number of saved vendors we have
 // ================================== IDK IF WE NEED/WANT THIS ONE ============================
-userSchema.virtual('bookCount').get(function () {
-    return this.savedBooks.length;
+userSchema.virtual('vendorCount').get(function () {
+    return this.savedVendors.length;
 });
 
 const User = model('User', userSchema);

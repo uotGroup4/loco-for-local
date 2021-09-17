@@ -7,16 +7,19 @@ const vendorSchema = new Schema({
         required: true,
     },
     // does this vendorId need to come from Google?
-    vendorId: {
-        type: String,
-        required: true,
-    },
+    // vendorId: {
+    //     type: String,
+    //     required: true,
+    // },
     image: {
         type: String,
     },
     website: {
         type: String,
     },
+    location: {
+        type: String,
+    }
     // hours: {
     //     type: String,
     // },

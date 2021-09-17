@@ -12,10 +12,11 @@ const typeDefs = gql `
     }
 
     type Vendor {
-        vendorId: String
+        _id: ID
         title: String
         website: String
         image: String
+        location: String
     }
 
     type Auth {
@@ -32,6 +33,10 @@ const typeDefs = gql `
 
     type Query {
         me: User
+        users: [User]
+        user(username: String!): User
+        vendors: [Vendor]
+        vendor(_id: ID!): Vendor
     }
 
     type Mutation {
