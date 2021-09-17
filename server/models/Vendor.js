@@ -1,6 +1,5 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-// subdocument schema, not own model but used in User.js 'savedVendor' array
 const vendorSchema = new Schema({
     title: {
         type: String,
@@ -25,4 +24,6 @@ const vendorSchema = new Schema({
     // },
 });
 
-module.exports = vendorSchema;
+const Vendor = model('Vendor', vendorSchema);
+
+module.exports = Vendor;

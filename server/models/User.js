@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 // const bcrypt = require('bcrypt');
 
 // import schema from Vendor.js
-const vendorSchema = require('./Vendor');
+// const vendorSchema = require('./Vendor');
 
 const userSchema = new Schema(
     {
@@ -22,7 +22,7 @@ const userSchema = new Schema(
             required: true,
         },
         // set savedVendors to be array of data that adheres to vendorSchema
-        savedVendors: [vendorSchema],
+        // savedVendors: [vendorSchema],
     },
     // virtuals
     {
