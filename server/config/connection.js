@@ -7,7 +7,7 @@ mongoose.connect(
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
-  }
-);
+  }).
+  then((db) => console.log('Mongodb is connected to', db.connection.host))
 
 module.exports = mongoose.connection;
