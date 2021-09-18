@@ -98,6 +98,13 @@ const resolvers = {
             // throw new AuthenticationError('You need to be logged in!')
         },
 
+        addVendor: async (parent, args) => {
+            const vendor = await Vendor.create(args);
+            // const token = signToken(user);
+
+            return { vendor };
+        },
+
         // addRating??
     }
 };

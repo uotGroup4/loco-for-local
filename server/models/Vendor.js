@@ -18,10 +18,13 @@ const vendorSchema = new Schema({
     },
     location: {
         type: String,
-    }
+    },
     // hours: {
     //     type: String,
     // },
+    description: {
+        type: String,
+    }
 });
 
 const Vendor = model('Vendor', vendorSchema);

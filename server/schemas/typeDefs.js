@@ -17,6 +17,7 @@ const typeDefs = gql `
         website: String
         image: String
         location: String
+        description: String
     }
 
     type Auth {
@@ -42,6 +43,7 @@ const typeDefs = gql `
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
+        addVendor(title: String!, location: String!, website: String!, image: String, description: String): Vendor
         saveVendor(input: vendorInput!): User
         removeVendor(vendorId: String!): User
     }
