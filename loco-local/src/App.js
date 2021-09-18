@@ -9,7 +9,7 @@ import Search from "./components/Search";
 //import Login from "./components/Login";
 
 function App() {
-  const [currentTab, setCurrentTab] = useState("about");
+  const [currentTab, setCurrentTab] = useState("search");
 
   // This function checks to see which tab is selected and then generates the appropriate tab.
   const renderTab = () => {
