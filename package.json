@@ -1,0 +1,19 @@
+{
+  "name": "loco-for-local",
+  "version": "1.0.0",
+  "description": "## Description Buying locally has become increasingly popular over the years. Whether you live in the area or are travelling looking for that unique stop Local vendors and Artists have proven to be a trendy and environmentally conscience choice. This gives people the chance to get out and explore and provide support to small businesses.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uotGroup4/loco-for-local.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uotGroup4/loco-for-local/issues"
+  },
+  "homepage": "https://github.com/uotGroup4/loco-for-local#readme"
+}
