@@ -5,6 +5,14 @@ import Profile from './components/profile';
 import React from 'react';
 import * as parksData from "./data/skateboard-parks.json"
 
+// Apollo provider so we can get data from graphql
+import { 
+  ApolloProvider, 
+  ApolloClient, 
+  InMemoryCache, 
+  createHttpLink 
+} from '@apollo/client';
+
 // google react api libraries
 import {
   GoogleMap,
@@ -41,6 +49,15 @@ const options = {
 }
 /////////////////////////////////////////////
 
+// connect to back end server /graphql endpoint
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql',
+});
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
+
 function App() {
   // use loadscript hook to setup load script/communicate with google api
   const {loadError, isLoaded} = useLoadScript({
@@ -52,28 +69,31 @@ function App() {
   if(!isLoaded) return "Loading Maps";
 
   return (
-    <div className="container">
-      <LoginButton />
-      <LogoutButton />
-      <Profile />
-      <GoogleMap
-        mapContainerStyle ={mapContainerStyle}
-        zoom = {10}
-        center = {center}
-        options = {options}
-      >
-        {/* embbed markers inside maps component */}
-        {parksData.features.map((park) => (
-          <Marker 
-            key={park.properties.PARK_ID}
-            position={{
-              lat: park.geometry.coordinates[1],
-              lng: park.geometry.coordinates[0]
-            }}
-          />
-        ))}
-      </GoogleMap>
-    </div>
+    // enable app to interact with Apollo client
+    <ApolloProvider client={client}>
+      <div className="container">
+        <LoginButton />
+        <LogoutButton />
+        <Profile />
+        <GoogleMap
+          mapContainerStyle ={mapContainerStyle}
+          zoom = {10}
+          center = {center}
+          options = {options}
+        >
+          {/* embbed markers inside maps component */}
+          {parksData.features.map((park) => (
+            <Marker 
+              key={park.properties.PARK_ID}
+              position={{
+                lat: park.geometry.coordinates[1],
+                lng: park.geometry.coordinates[0]
+              }}
+            />
+          ))}
+        </GoogleMap>
+      </div>
+    </ApolloProvider>
   );
 }
 
