@@ -175,7 +175,7 @@ img {
 .footer {
 	padding:40px 0;
 	background-color:#ffffff;
-	color:#4b4c4d;
+	color: RGB(143, 62, 63);
   }
   
   .footer ul {
@@ -228,7 +228,7 @@ img {
 	margin-top:15px;
 	text-align:center;
 	font-size:13px;
-	color:#aaa;
+	color:RGB(143, 62, 63);;
 	margin-bottom:0;
   }
 
@@ -250,9 +250,6 @@ img {
 	
 }
 
-/*.bottom-spacing {
-	margin-bottom: var(--spacing-five);
-} */
 
 
 /* Viewports Styling start*/
