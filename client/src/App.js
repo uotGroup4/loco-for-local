@@ -24,8 +24,8 @@ import mapStyles from './mapStyles';
 // set up options to pass to the googlemaps component (to avoid rerendering)
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: "90%",
-  height: "50%"
+  width: "100vw",
+  height: "100vh"
 };
 
 // lat/lng for ottawa, toronto is lat: 43.6532, lng:-79.3831
