@@ -55,14 +55,11 @@ const resolvers = {
         // Login user
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
-            console.log(user)
 
             if (!user) {
                 console.log('user exists')
                 throw new AuthenticationError('Incorrect credentials');
             }
-
-            console.log(password)
             const correctPw = await user.isCorrectPassword(password);
             console.log("correctp is " + correctPw)
 
@@ -73,6 +70,8 @@ const resolvers = {
 
             const token = signToken(user);
             return { token, user };
+
+    
         },
 
         // save a vendor to user favourites

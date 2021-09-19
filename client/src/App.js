@@ -1,7 +1,4 @@
 import './App.css';
-import LoginButton from './components/login';
-import LogoutButton from './components/logout';
-import Profile from './components/profile';
 import React from 'react';
 import * as parksData from "./data/skateboard-parks.json"
 
@@ -65,7 +62,7 @@ function App() {
     libraries
   });
 
-  if(loadError) return "Errror loading map";
+  if(loadError) return "Error loading map";
   if(!isLoaded) return "Loading Maps";
 
   return (
