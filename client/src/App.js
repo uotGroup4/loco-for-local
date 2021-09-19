@@ -68,31 +68,63 @@ function App() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
   });
+  const [currentTab, setCurrentTab] = useState("search");
+  const renderTab = () => {
+    switch (currentTab) {
+      case "search":
+        return <Search />;
+      //case "contact":
+      //return <Contact />;
+      //case "register":
+      //return <Register />;
+      //case "profile":
+      //return <Profile />;
+      //case "login":
+      //return <Login />;
+      default:
+        return null;
+    }
+  }
+
+
 
   if (loadError) return "Errror loading map";
   if (!isLoaded) return "Loading Maps";
 
   return (
+
     <ApolloProvider client={client}>
-      <div className="map-container">
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={10}
-          center={center}
-          options={options}
-        >
-          {/* embbed markers inside maps component */}
-          {parksData.features.map((park) => (
-            <Marker
-              key={park.properties.PARK_ID}
-              position={{
-                lat: park.geometry.coordinates[1],
-                lng: park.geometry.coordinates[0]
-              }}
-            />
-          ))}
-        </GoogleMap>
+      <div className="mobile-header">
+        <Header currentTab={currentTab} setCurrentTab={setCurrentTab}>
+
+
+        </Header>
       </div>
+      <main>{renderTab()}
+        <div className="map-container">
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={10}
+            center={center}
+            options={options}
+          >
+            {/* embbed markers inside maps component */}
+            {parksData.features.map((park) => (
+              <Marker
+                key={park.properties.PARK_ID}
+                position={{
+                  lat: park.geometry.coordinates[1],
+                  lng: park.geometry.coordinates[0]
+                }}
+              />
+            ))}
+          </GoogleMap>
+        </div>
+      </main>
+      <div>
+        <Footer></Footer>
+      </div>
+
     </ApolloProvider>
   );
 }
