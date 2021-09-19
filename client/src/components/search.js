@@ -2,8 +2,8 @@ import React from 'react';
 import * as parksData from "../data/skateboard-parks.json";
 
 // integrate apollo hooks in homepage
-// import { useQuery } from '@apollo/client';
-// import { QUERY_VENDORS } from './utils/queries';
+import { useQuery } from '@apollo/client';
+import { QUERY_VENDORS } from '../utils/queries';
 
 // google react api libraries
 import {
@@ -42,15 +42,16 @@ const Search = () => {
         libraries
     });
 
+    // use useQuery hook to make query request
+    const { loading, data } = useQuery(QUERY_VENDORS);
+
+    // get vendor data out of query's response
+    const vendors = data?.vendors || [];
+    console.log(vendors);
+
+    // these if's need to be last 
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading Maps";
-
-    // // use useQuery hook to make query request
-    // const { loading, data } = useQuery(QUERY_VENDORS);
-
-    // // get vendor data out of query's response
-    // const vendors = data?.vendors || [];
-    // console.log(vendors);
 
     return (
         <section>

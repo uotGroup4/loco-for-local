@@ -15,40 +15,6 @@ import {
   createHttpLink
 } from '@apollo/react-hooks';
 
-// // google react api libraries
-// import {
-//   GoogleMap,
-//   useLoadScript,
-//   Marker,
-//   // InfoWindow,
-// } from '@react-google-maps/api';
-
-// import usePlacesAutocomplete, {
-//   getGeocode,
-//   getLatLng, } 
-//   from 'use-places-autocomplete';
-
-// // styling for the map
-// import mapStyles from './mapStyles';
-
-// // set up options to pass to the googlemaps component (to avoid rerendering)
-// const libraries = ['places'];
-// const mapContainerStyle = {
-//   width: "100vw",
-//   height: "100vh"
-// };
-
-// // lat/lng for ottawa, toronto is lat: 43.6532, lng:-79.3831
-// const center = {
-//   lat: 45.4247,
-//   lng: -75.6950
-// };
-
-// const options = {
-//   styles: mapStyles,
-//   disableDefaultUI: true,
-//   zoomControl: true,
-// }
 
 // we need to establish the connection to the back-end server's /graphql endpoint. establish a new link to the GraphQL server at its /graphql endpoint with createHttpLink()
 const httpLink = createHttpLink({
@@ -62,11 +28,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  // // use loadscript hook to setup load script/communicate with google api
-  // const { loadError, isLoaded } = useLoadScript({
-  //   googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-  //   libraries
-  // });
   const [currentTab, setCurrentTab] = useState("search");
   const renderTab = () => {
     switch (currentTab) {
@@ -85,20 +46,14 @@ function App() {
     }
   }
 
-  // if (loadError) return "Error loading map";
-  // if (!isLoaded) return "Loading Maps";
-
   return (
 
     <ApolloProvider client={client}>
       <div className="mobile-header">
-        <Header currentTab={currentTab} setCurrentTab={setCurrentTab}>
-
-
-        </Header>
+        <Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
       </div>
-      <main>{renderTab()}
-       
+      <main>
+        {renderTab()}
       </main>
       <div>
         <Footer></Footer>

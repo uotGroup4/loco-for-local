@@ -10,6 +10,6 @@ export const QUERY_VENDORS = gql`
     }
 `;
 
-export const QUERY_VENDOR = gql`
-    query vendor($id: ID!)
-`;
+// export const QUERY_VENDOR = gql`
+//     query vendor($id: ID!)
+// `;
