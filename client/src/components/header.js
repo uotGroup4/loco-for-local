@@ -1,6 +1,6 @@
 import React from "react";
-import Nav from "../../../loco-local/src/components/Nav";
-import locologo from '../../assets/icon/locologo.png'
+import Nav from "./nav";
+import locologo from '../assets/icon/locologo.png'
 
 
 

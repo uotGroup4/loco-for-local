@@ -6,7 +6,6 @@ import Profile from './components/profile';
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Search from "./components/footer";
-import React from 'react';
 import * as parksData from "./data/skateboard-parks.json"
 
 import {

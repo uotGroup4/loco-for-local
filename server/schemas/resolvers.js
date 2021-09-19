@@ -70,8 +70,13 @@ const resolvers = {
 
             const token = signToken(user);
             return { token, user };
+        },
 
-    
+        // Add a vendor to the database
+        addVendor: async (parent, args) => {
+            const vendor = await Vendor.create(args);
+
+            return { vendor };
         },
 
         // save a vendor to user favourites

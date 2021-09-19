@@ -62,12 +62,16 @@ const typeDefs = gql `
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
+        addVendor(title: String!, location: String!, website: String!, image: String): Vendor
         saveVendor(input: vendorInput!): User
         removeVendor(vendorId: String!): User
         saveShop(input: shopInput!): User
         removeShop(shopId: String!): User
     }
 `;
+// deleteVendor: Vendor
+// addShop: Shop
+// Should addVendor/Shop be the same thing with a button to select what type of vendor? (Stretch goal)
 
 //export typeDefs
 module.exports = typeDefs;
