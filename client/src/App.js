@@ -5,6 +5,13 @@ import Profile from './components/profile';
 import React from 'react';
 import * as parksData from "./data/skateboard-parks.json"
 
+import { 
+  ApolloProvider, 
+  ApolloClient, 
+  InMemoryCache, 
+  createHttpLink 
+} from '@apollo/react-hooks';
+
 // google react api libraries
 import {
   GoogleMap,
@@ -39,7 +46,17 @@ const options = {
   disableDefaultUI: true,
   zoomControl: true,
 }
-/////////////////////////////////////////////
+
+// we need to establish the connection to the back-end server's /graphql endpoint. establish a new link to the GraphQL server at its /graphql endpoint with createHttpLink()
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql',
+});
+
+// instantiate a new cache object using new InMemoryCache()
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
 
 function App() {
   // use loadscript hook to setup load script/communicate with google api
@@ -52,28 +69,30 @@ function App() {
   if(!isLoaded) return "Loading Maps";
 
   return (
-    <div className="container">
-      <LoginButton />
-      <LogoutButton />
-      <Profile />
-      <GoogleMap
-        mapContainerStyle ={mapContainerStyle}
-        zoom = {10}
-        center = {center}
-        options = {options}
-      >
-        {/* embbed markers inside maps component */}
-        {parksData.features.map((park) => (
-          <Marker 
+    <ApolloProvider client={client}>
+      <div className="container">
+        <LoginButton />
+        <LogoutButton />
+        <Profile />
+        <GoogleMap
+          mapContainerStyle ={mapContainerStyle}
+          zoom = {10}
+          center = {center}
+          options = {options}
+          >
+          {/* embbed markers inside maps component */}
+          {parksData.features.map((park) => (
+            <Marker 
             key={park.properties.PARK_ID}
             position={{
               lat: park.geometry.coordinates[1],
               lng: park.geometry.coordinates[0]
             }}
-          />
-        ))}
-      </GoogleMap>
-    </div>
+            />
+            ))}
+        </GoogleMap>
+      </div>
+    </ApolloProvider>
   );
 }
 
