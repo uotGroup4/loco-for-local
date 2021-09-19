@@ -70,7 +70,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="container">
+      <div className="map-container">
         <GoogleMap
           mapContainerStyle ={mapContainerStyle}
           zoom = {10}
