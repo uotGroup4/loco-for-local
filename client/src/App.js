@@ -86,10 +86,8 @@ function App() {
     }
   }
 
-
-
-  if (loadError) return "Errror loading map";
-  if (!isLoaded) return "Loading Maps";
+  if(loadError) return "Error loading map";
+  if(!isLoaded) return "Loading Maps";
 
   return (
 
