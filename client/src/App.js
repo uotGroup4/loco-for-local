@@ -18,7 +18,7 @@ import {
 
 // we need to establish the connection to the back-end server's /graphql endpoint. establish a new link to the GraphQL server at its /graphql endpoint with createHttpLink()
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 // instantiate a new cache object using new InMemoryCache()
@@ -30,7 +30,7 @@ const client = new ApolloClient({
 function App() {
 
   const [currentTab, setCurrentTab] = useState("search");
-  
+
   const renderTab = () => {
     switch (currentTab) {
       case "search":
