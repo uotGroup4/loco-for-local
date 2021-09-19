@@ -3,7 +3,7 @@ import "./App.css";
 import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Search from "./components/Search";
+import Search from "../../client/src/components/search";
 //import Contact from "./components/Contact";
 //import Profile from "./components/Profile";
 //import Login from "./components/Login";
