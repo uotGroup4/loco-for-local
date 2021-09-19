@@ -1,12 +1,19 @@
 import './App.css';
+import React, { useState } from "react"
+import LoginButton from './components/login';
+import LogoutButton from './components/logout';
+import Profile from './components/profile';
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Search from "./components/footer";
 import React from 'react';
 import * as parksData from "./data/skateboard-parks.json"
 
-import { 
-  ApolloProvider, 
-  ApolloClient, 
-  InMemoryCache, 
-  createHttpLink 
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink
 } from '@apollo/react-hooks';
 
 // google react api libraries
@@ -14,7 +21,7 @@ import {
   GoogleMap,
   useLoadScript,
   Marker,
-// InfoWindow,
+  // InfoWindow,
 } from '@react-google-maps/api';
 
 // import usePlacesAutocomplete, {
@@ -22,7 +29,7 @@ import {
 //   getLatLng, } 
 //   from 'use-places-autocomplete';
 
-  // styling for the map
+// styling for the map
 import mapStyles from './mapStyles';
 
 // set up options to pass to the googlemaps component (to avoid rerendering)
@@ -35,7 +42,7 @@ const mapContainerStyle = {
 // lat/lng for ottawa, toronto is lat: 43.6532, lng:-79.3831
 const center = {
   lat: 45.4247,
-  lng:-75.6950
+  lng: -75.6950
 };
 
 const options = {
@@ -57,35 +64,65 @@ const client = new ApolloClient({
 
 function App() {
   // use loadscript hook to setup load script/communicate with google api
-  const {loadError, isLoaded} = useLoadScript({
+  const { loadError, isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
   });
+  const [currentTab, setCurrentTab] = useState("search");
+  const renderTab = () => {
+    switch (currentTab) {
+      case "search":
+        return <Search />;
+      //case "contact":
+      //return <Contact />;
+      //case "register":
+      //return <Register />;
+      //case "profile":
+      //return <Profile />;
+      //case "login":
+      //return <Login />;
+      default:
+        return null;
+    }
+  }
 
   if(loadError) return "Error loading map";
   if(!isLoaded) return "Loading Maps";
 
   return (
+
     <ApolloProvider client={client}>
-      <div className="map-container">
-        <GoogleMap
-          mapContainerStyle ={mapContainerStyle}
-          zoom = {10}
-          center = {center}
-          options = {options}
-          >
-          {/* embbed markers inside maps component */}
-          {parksData.features.map((park) => (
-            <Marker 
-            key={park.properties.PARK_ID}
-            position={{
-              lat: park.geometry.coordinates[1],
-              lng: park.geometry.coordinates[0]
-            }}
-            />
-            ))}
-        </GoogleMap>
+      <div className="mobile-header">
+        <Header currentTab={currentTab} setCurrentTab={setCurrentTab}>
+
+
+        </Header>
       </div>
+      <main>{renderTab()}
+        <div className="map-container">
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={10}
+            center={center}
+            options={options}
+          >
+            {/* embbed markers inside maps component */}
+            {parksData.features.map((park) => (
+              <Marker
+                key={park.properties.PARK_ID}
+                position={{
+                  lat: park.geometry.coordinates[1],
+                  lng: park.geometry.coordinates[0]
+                }}
+              />
+            ))}
+          </GoogleMap>
+        </div>
+      </main>
+      <div>
+        <Footer></Footer>
+      </div>
+
     </ApolloProvider>
   );
 }
