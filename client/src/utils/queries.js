@@ -52,3 +52,39 @@ export const QUERY_USER = gql`
         }
     }
 `;
+
+export const QUERY_ME = gql`
+    {
+        me {
+            _id
+            username
+            email
+            vendorCount
+            savedVendors {
+                _id
+                title
+                website
+                image
+                location
+            }
+            savedShops {
+                _id
+                title
+                website
+                image
+                location
+                description
+            }
+        }
+    }
+`;
+
+export const QUERY_ME_BASIC = gql`
+    { 
+        me {
+            _id
+            username
+            email
+        }
+    }
+`;
