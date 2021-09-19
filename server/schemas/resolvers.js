@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Vendor } = require('../models');
+const { User, Vendor, Shop } = require('../models');
 const { signToken } = require('../utils/auth');
 
 
@@ -32,6 +32,14 @@ const resolvers = {
         // Get single vendor by id
         vendor: async (parent, { _id }) => {
             return Vendor.findOne({ _id });
+        },
+        // Get all shops query
+        shop: async () => {
+            return Shop.find()
+            // It'd be nice to sort by alphabetical perhaps
+        },
+        shop: async (parent, { _id }) => {
+            return Shop.findOne({ _id });
         }
     },
 
@@ -67,8 +75,6 @@ const resolvers = {
             return { token, user };
         },
 
-        // Update user??
-
         // save a vendor to user favourites
         saveVendor: async (parent, { input }, context) => {
             if (context.user) {
@@ -81,7 +87,7 @@ const resolvers = {
                 return updatedUser;
             }
 
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
 
         removeVendor: async (parent, { vendorId }, context) => {
@@ -95,7 +101,34 @@ const resolvers = {
                 return updatedUser;
             }
 
-            // throw new AuthenticationError('You need to be logged in!')
+            throw new AuthenticationError('You need to be logged in!')
+        },
+
+        // save shop to user favourites
+        saveShop: async (parent, { input }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { saveShop: input } },
+                    { new: true }
+                );
+                return updatedUser;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        removeShop: async (parent, { shopId }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { savedShop: { shopId: shopId } } },
+                    { new: true, runValidators: true }
+                );
+
+                return updatedUser;
+            }
+
+            throw new AuthenticationError('You need to be logged in!')
         },
 
         // addRating??

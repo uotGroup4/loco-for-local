@@ -42,7 +42,7 @@ const center = {
 };
 
 const options = {
-  // styles: mapStyles,
+  styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 }
@@ -70,10 +70,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="container">
-        <LoginButton />
-        <LogoutButton />
-        <Profile />
+      <div className="map-container">
         <GoogleMap
           mapContainerStyle ={mapContainerStyle}
           zoom = {10}
