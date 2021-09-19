@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as parksData from "../data/skateboard-parks.json";
 
 // integrate apollo hooks in homepage
@@ -41,13 +41,21 @@ const Search = () => {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries
     });
-
+    
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_VENDORS);
+    
+    useEffect(() => {
+        if(data) {
+            console.log(data.vendors);
+            console.log(data.vendors[0].title);
+        }
+    }, [data]);
 
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
-    console.log(vendors);
+    // console.log(vendors);
+    // console.log(vendors[0].title);
 
     // these if's need to be last 
     if (loadError) return "Error loading map";
