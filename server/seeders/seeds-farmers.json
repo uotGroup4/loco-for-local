@@ -1,5 +1,4 @@
 [
-    // ONTARIO
     {
         "title": "Covent Garden Market",
         "image": "https://www.londontourism.ca/mediafiles/members/covent-garden-market1.jpg",
@@ -72,7 +71,9 @@
         "website": "https://leeandmarias.com/?utm_source=google&utm_medium=gmb&utm_campaign=google_click",
         "location": "692 Seacliff Dr, Kingsville, ON N9Y 2K7"
     },
-    // BC
+
+
+
     {
         "title": "Kamloops Regional Farmers' Market",
         "image": "",
@@ -103,7 +104,9 @@
         "website": "https://wildsight.ca/branches/kimcran/kimberley-farmers-market/",
         "location": "Between Kimberley and, Howard Street, Wallinger Ave, Kimberley, BC V1A 2G6"
     },
-    // ALBERTA
+
+
+
     {
         "title": "St. Albert Farmer's Market",
         "image": "",
@@ -128,7 +131,10 @@
         "website": "http://www.airdriefarmersmarket.com/",
         "location": "320 Centre Ave E, Airdrie, AB"
     },
-    // SASKATCHEWAN
+
+
+
+
     {
         "title": "Saskatoon Farmers' Market",
         "image": "",
@@ -159,7 +165,9 @@
         "website": "https://reginafarmersmarket.ca/",
         "location": "City Square Plaza, 2190 Victoria Ave, Regina, SK S4N 6T5"
     },
-    // MANITOBA
+
+
+
     {
         "title": "River Heights Farmers’ Market",
         "image": "",
@@ -190,7 +198,9 @@
         "website": "http://www.kurbiscountry.ca/",
         "location": "42055 MB-317, Beausejour, MB R0E 0C0"
     },
-    // QUEBEC
+
+
+
     {
         "title": "Jean Talon Market",
         "image": "",
@@ -203,7 +213,9 @@
         "website": "https://www.legrandmarchedequebec.com/fr/",
         "location": "250 section M, Bd Wilfrid-Hamel, Québec, QC G1L 5A7"
     },
-    // NEW BRUNSWICK
+
+
+
     {
         "title": "Kingston Farmer's Market",
         "image": "",
@@ -234,7 +246,9 @@
         "website": "http://www.marchemonctonmarket.ca/",
         "location": "120 Westmorland St, Moncton, NB E1C 0R9"
     },
-    // NOVA SCOTIA
+
+
+
     {
         "title": "Halifax Seaport Farmers' Market",
         "image": "",
@@ -277,7 +291,9 @@
         "website": "https://lunenburgfarmersmarketns.ca/",
         "location": "19 Green St, Lunenburg, NS B0J 2C0"
     },
-    // NEWFOUNDLAND
+
+
+
     {
         "title": "St. John's Farmers' Market",
         "image": "",
@@ -302,7 +318,9 @@
         "website": "http://www.cormackmarketandflorist.com/",
         "location": "69 The Viking Trail, Cormack, NL A8A 2S3"
     },
-    // PRINCE EDWARD ISLAND
+
+
+    
     {
         "title": "Charlottetown Farmers Market",
         "image": "",
