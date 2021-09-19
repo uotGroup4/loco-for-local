@@ -2,7 +2,8 @@ const db = require('../models');
 const mongoose = require('mongoose');
 
 // this file empties the users and vendor collecntrion and insters the seeds bellow
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/loco-for-local', {
+mongoose.connect('mongodb+srv://saidhadad:Superstr0ng@loco-for-local.fumoj.mongodb.net/loco-for-local?retryWrites=true&w=majority',
+{
     useNewUrlParser: true,
 });
 
@@ -42,7 +43,7 @@ const vendorData = [
 db.Vendor.deleteMany({})
   .then(() => db.Vendor.collection.insertMany(vendorData))
   .then(data => {
-    console.log(data.result.n + 'records inserted!');
+    console.log(data.result.n + ' records inserted!');
     process.exit(0);
   })
   .catch(err => {
@@ -52,7 +53,7 @@ db.Vendor.deleteMany({})
   db.User.deleteMany({})
   .then(() => db.User.collection.insertMany(userData))
   .then(data => {
-    console.log(data.result.n + 'records inserted!');
+    console.log(data.result.n + ' records inserted!');
     process.exit(0);
   })
   .catch(err => {
