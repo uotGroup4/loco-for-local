@@ -28,7 +28,9 @@ const client = new ApolloClient({
 });
 
 function App() {
+
   const [currentTab, setCurrentTab] = useState("search");
+  
   const renderTab = () => {
     switch (currentTab) {
       case "search":
