@@ -25,3 +25,30 @@ export const QUERY_VENDOR = gql`
         }
     }
 `;
+
+// User information by username
+export const QUERY_USER = gql`
+    query user($username: String!) {
+        user(username: $username) {
+            _id
+            username
+            email
+            vendorCount
+            savedVendors {
+                _id
+                title
+                website
+                image
+                location
+            }
+            savedShops {
+                _id
+                title
+                website
+                image
+                location
+                description
+            }
+        }
+    }
+`;

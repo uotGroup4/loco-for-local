@@ -30,5 +30,6 @@ const SingleVendor = (props) => {
             {vendor.location}
         </div>
     );
-
 };
+
+export default SingleVendor;

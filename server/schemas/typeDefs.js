@@ -9,7 +9,7 @@ const typeDefs = gql `
         email: String
         vendorCount: Int
         savedVendors: [Vendor]
-        sabedShops: [Shop]
+        savedShops: [Shop]
     }
 
     type Vendor {
