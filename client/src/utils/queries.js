@@ -9,6 +9,7 @@ query vendor {
       website
       image
       location
+      coordinates
     }
   }
 `;

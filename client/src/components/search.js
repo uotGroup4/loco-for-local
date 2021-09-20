@@ -47,15 +47,14 @@ const Search = () => {
     
     useEffect(() => {
         if(data) {
-            console.log(data.vendors);
-            console.log(data.vendors[0].title);
+            // console.log(data.vendors);
+            // console.log(data.vendors[0].coordinates);
         }
     }, [data]);
 
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
-    // console.log(vendors);
-    // console.log(vendors[0].title);
+    console.log(vendors);
 
     // these if's need to be last 
     if (loadError) return "Error loading map";
@@ -83,12 +82,12 @@ const Search = () => {
                         options={options}
                     >
                         {/* embbed markers inside maps component */}
-                        {parksData.features.map((park) => (
+                        {parksData.features.map((data) => (
                             <Marker
-                                key={park.properties.PARK_ID}
+                                key={data.vendors._id}
                                 position={{
-                                    lat: park.geometry.coordinates[1],
-                                    lng: park.geometry.coordinates[0]
+                                    lat: data.vendors.coordinates[1],
+                                    lng: data.vendors.coordinates[0]
                                 }}
                             />
                         ))}

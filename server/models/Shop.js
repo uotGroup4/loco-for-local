@@ -20,8 +20,9 @@ const shopSchema = new Schema({
         type: String,
     },
     description: {
-      type: String
-    }
+        type: String
+    },
+    coordinates: []
     // hours: {
     //     type: String,
     // },

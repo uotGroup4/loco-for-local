@@ -18,6 +18,7 @@ const typeDefs = gql `
         image: String
         website: String
         location: String
+        coordinates: [String]
     }
 
     type Shop {
@@ -27,6 +28,7 @@ const typeDefs = gql `
         website: String
         location: String
         description: String
+        coordinates: [String]
     }
 
     input vendorInput {
@@ -34,6 +36,7 @@ const typeDefs = gql `
         title: String
         website: String
         image: String
+        coordinates: [String]
     }
 
     input shopInput {
@@ -42,6 +45,7 @@ const typeDefs = gql `
         website: String
         image: String
         description: String
+        coordinates: [String]
     }
 
     type Auth {
@@ -62,7 +66,8 @@ const typeDefs = gql `
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addVendor(title: String!, location: String!, website: String!, image: String): Vendor
+        addVendor(title: String!, location: String!, website: String!, image: String, coordinates: String!): Vendor
+        addShop(title: String!, location: String!, website: String!, image: String, description: String, coordinates: String!): Vendor
         saveVendor(input: vendorInput!): User
         removeVendor(vendorId: String!): User
         saveShop(input: shopInput!): User
