@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as parksData from "../data/skateboard-parks.json";
 
 // integrate apollo hooks in homepage
@@ -45,10 +45,11 @@ const Search = () => {
     
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_VENDORS);
+    
 
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
-    
+
     // these if's need to be last 
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading Maps";
@@ -69,13 +70,11 @@ const Search = () => {
                         options={options}
                     >
                         {/* embbed markers inside maps component */}
-                        {parksData.features.map((park) => (
+                        {vendors.map((vendors) => (
                             <Marker 
-                                key={park.properties.PARK_ID}
-                                position={{
-                                    lat: park.geometry.coordinates[1],
-                                    lng: park.geometry.coordinates[0]
-                                }}
+                                key={vendors._id}
+                                position={{lat: parseFloat(vendors.coordinates[1]) , lng: parseFloat(vendors.coordinates[0])}}
+
                             />
                         ))}
                     </GoogleMap>
