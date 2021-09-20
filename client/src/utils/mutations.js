@@ -25,3 +25,41 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+// mut to save vendor
+export const SAVE_VENDOR = gql`
+  mutation saveVendor($input: vendorInput!) {
+    saveVendor(input: $input) {
+      _id
+      username
+      email
+      savedVendors {
+        vendorId
+        title
+        image
+        website
+        location
+        coordinates
+      }
+    }
+  }
+`;
+
+// mut to remove vendor
+export const REMOVE_VENDOR = gql`
+  mutation removeVendor($bookId: String!) {
+    removeVendor(vendorId: $vendorId) {
+      _id
+      username
+      email
+      savedVendors {
+        vendorId
+        title
+        image
+        website
+        location
+        coordinates
+      }
+    }
+  }
+`;
