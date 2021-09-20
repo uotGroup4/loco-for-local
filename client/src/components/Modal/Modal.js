@@ -17,6 +17,8 @@ const Modal = props => {
         };
     }, []);
 
+    console.log(props)
+
     return ReactDOM.createPortal(
         <CSSTransition
             in={props.show}
@@ -30,9 +32,7 @@ const Modal = props => {
                     </div>
                     <div className="modal-body">{props.children}</div>
                     <div className="modal-footer">
-                        <button onClick={props.onClose} className="button">
-                            Close
-            </button>
+                        <button onClick={props.onClose} className="button">Close</button>
                     </div>
                 </div>
             </div>
