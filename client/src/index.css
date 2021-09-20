@@ -1,5 +1,4 @@
-/* styles for components starts here
-
+/* styles for components starts here */
 :root {
   --primary:RGB(143, 62, 63);
   --secondary:white;
@@ -32,7 +31,11 @@ a
 	color: var(--primary); 
     
 }
-
+.heading {
+	display: flex;
+	justify-content: center;
+	background-color:var var(--primary);
+  }
 h1,
 h2,
 h3{
