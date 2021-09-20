@@ -51,6 +51,7 @@ const Search = () => {
 
     // these if's need to be last 
     if (loadError) return "Error loading map";
+    
     if (!isLoaded) return "Loading Maps";
 
     return (
