@@ -10,7 +10,7 @@ import {
     GoogleMap,
     useLoadScript,
     Marker,
-    // InfoWindow,
+    InfoWindow,
 } from '@react-google-maps/api';
 
 // styling for the map
@@ -25,8 +25,8 @@ const mapContainerStyle = {
 
 // lat/lng for ottawa, toronto is lat: 43.6532, lng:-79.3831
 const center = {
-    lat: 45.4247,
-    lng: -75.6950
+    lat: 43.6532,
+    lng: -79.3831
 };
 
 const options = {
@@ -46,7 +46,6 @@ const Search = () => {
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_VENDORS);
     
-
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
 
