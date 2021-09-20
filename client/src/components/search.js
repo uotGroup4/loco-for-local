@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import * as parksData from "../data/skateboard-parks.json";
 
 // integrate apollo hooks in homepage
 import { useQuery } from '@apollo/client';
@@ -42,7 +41,8 @@ const Search = () => {
         libraries
     });
 
-    
+    const [ selected, setSelected ] = React.useState(null)
+    console.log(selected);
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_VENDORS);
     
@@ -67,16 +67,31 @@ const Search = () => {
                         zoom={10}
                         center={center}
                         options={options}
+                        onClick={(event) => {
+                            console.log(event)
+                        }}
                     >
                         {/* embbed markers inside maps component */}
-                        {vendors.map((vendors) => (
+                        {vendors.map((vendor) => (
                             <Marker 
-                                key={vendors._id}
-                                position={{lat: parseFloat(vendors.coordinates[1]) , lng: parseFloat(vendors.coordinates[0])}}
-
+                                key={vendor._id}
+                                position={{lat: parseFloat(vendor.coordinates[1]) , lng: parseFloat(vendor.coordinates[0])}}
+                                icon={{
+                                    url: 'lfl_favicon.png',
+                                    scaledSize: {height: 30, width: 30}
+                                }}
+                                onClick={() => {
+                                    setSelected(vendor);
+                                }}
                             />
                         ))}
-                    </GoogleMap>
+                        {selected ? (<InfoWindow position={{lat: parseFloat(selected.coordinates[1]), lng: parseFloat(selected.coordinates[0])}}>
+                            <div>
+                                <h2>its working</h2>
+                            </div>
+                        </InfoWindow>
+                        ) : null}
+                    </GoogleMap> 
                 </div>
                 <p>
                     Add a brief description with a h1
