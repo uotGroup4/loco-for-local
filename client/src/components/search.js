@@ -44,6 +44,7 @@ const Search = () => {
     
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_VENDORS);
+    console.log(loading);
     
     useEffect(() => {
         if(data) {
