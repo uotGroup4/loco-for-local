@@ -18,7 +18,8 @@ const vendorSchema = new Schema({
     },
     location: {
         type: String,
-    }
+    },
+    coordinates: []
     // hours: {
     //     type: String,
     // },
