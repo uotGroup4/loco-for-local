@@ -49,9 +49,8 @@ const Search = () => {
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
 
-    // these if's need to be last 
+    // these if's need to be last they load the map
     if (loadError) return "Error loading map";
-    
     if (!isLoaded) return "Loading Maps";
 
     return (
