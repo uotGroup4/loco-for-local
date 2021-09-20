@@ -85,7 +85,9 @@ const Search = () => {
                                 }}
                             />
                         ))}
-                        {selected ? (<InfoWindow position={{lat: parseFloat(selected.coordinates[1]), lng: parseFloat(selected.coordinates[0])}}>
+                        {selected ? (<InfoWindow position={{lat: parseFloat(selected.coordinates[1]), lng: parseFloat(selected.coordinates[0])}} onCloseClick={() => {
+                            setSelected(null)
+                        }}>
                             <div>
                                 <h2>its working</h2>
                             </div>
