@@ -41,21 +41,25 @@ const Search = () => {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries
     });
+
     
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_VENDORS);
-    console.log(loading);
-    
-    useEffect(() => {
-        if(data) {
-            // console.log(data.vendors);
-            // console.log(data.vendors[0].coordinates);
-        }
-    }, [data]);
 
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
-    console.log(vendors);
+    
+    const vendor = useEffect(() => {
+        if(data) {
+            console.log(vendor)
+            console.log(vendors[0].coordinates);
+        }
+    }, [data]);
+
+
+
+    // console.log(vendors);
+    // console.log(vendors[0].coordinates);
 
     // these if's need to be last 
     if (loadError) return "Error loading map";
@@ -65,16 +69,10 @@ const Search = () => {
         <section>
             <div className="center" id="search">
                 <h1 className="page-header">Loco for local</h1>
-
             </div>
-
             <div className="center">
             </div>
-
-            <br></br>
-
             <div>
-
                 <div className="map-container">
                     <GoogleMap
                         mapContainerStyle={mapContainerStyle}
@@ -83,12 +81,12 @@ const Search = () => {
                         options={options}
                     >
                         {/* embbed markers inside maps component */}
-                        {parksData.features.map((data) => (
-                            <Marker
-                                key={data.vendors._id}
+                        {parksData.features.map((park) => (
+                            <Marker 
+                                key={park.properties.PARK_ID}
                                 position={{
-                                    lat: data.vendors.coordinates[1],
-                                    lng: data.vendors.coordinates[0]
+                                    lat: park.geometry.coordinates[1],
+                                    lng: park.geometry.coordinates[0]
                                 }}
                             />
                         ))}
