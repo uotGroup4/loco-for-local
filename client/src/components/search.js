@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Modal from "./Modal/Modal";
 
 // integrate apollo hooks in homepage
 import { useQuery } from '@apollo/client';
@@ -41,11 +42,14 @@ const Search = () => {
         libraries
     });
 
-    const [ selected, setSelected ] = React.useState(null)
+    const [selected, setSelected] = React.useState(null)
     console.log(selected);
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_VENDORS);
-    
+
+    //for the modal set show
+    const [show, setShow] = useState(false);
+
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
 
@@ -73,30 +77,33 @@ const Search = () => {
                     >
                         {/* embbed markers inside maps component */}
                         {vendors.map((vendor) => (
-                            <Marker 
+                            <Marker
                                 key={vendor._id}
-                                position={{lat: parseFloat(vendor.coordinates[1]) , lng: parseFloat(vendor.coordinates[0])}}
+                                position={{ lat: parseFloat(vendor.coordinates[1]), lng: parseFloat(vendor.coordinates[0]) }}
                                 icon={{
                                     url: 'lfl_favicon.png',
-                                    scaledSize: {height: 30, width: 30}
+                                    scaledSize: { height: 30, width: 30 }
                                 }}
                                 onClick={() => {
                                     setSelected(vendor);
                                 }}
                             />
                         ))}
-                        {selected ? (<InfoWindow position={{lat: parseFloat(selected.coordinates[1]), lng: parseFloat(selected.coordinates[0])}} onCloseClick={() => {
+                        {selected ? (<InfoWindow position={{ lat: parseFloat(selected.coordinates[1]), lng: parseFloat(selected.coordinates[0]) }} onCloseClick={() => {
                             setSelected(null)
                         }}>
-                            <div>
-                                <h2>its working</h2>
+                            <div className="App">
+                                <button onClick={() => setShow(true)}>Show Modal</button>
+                                <Modal title="My Modal" onClose={() => setShow(false)} show={show}>
+                                    <p>Modal body content</p>
+                                </Modal>
                             </div>
                         </InfoWindow>
                         ) : null}
-                    </GoogleMap> 
+                    </GoogleMap>
                 </div>
                 <p>
-                    Add a brief description with a h1
+                    Add a brief description of how to search with a h1
                 </p>
             </div>
         </section>

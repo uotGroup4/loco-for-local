@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useState } from "react"
-// import LoginButton from './components/login';
+//import LoginButton from './components/login';
 // import LogoutButton from './components/logout';
-// import Profile from './components/profile';
+//import Profile from './components/profile';
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Search from "./components/search";
