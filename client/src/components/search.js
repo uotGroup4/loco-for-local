@@ -49,18 +49,6 @@ const Search = () => {
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
     
-    const vendor = useEffect(() => {
-        if(data) {
-            console.log(vendor)
-            console.log(vendors[0].coordinates);
-        }
-    }, [data]);
-
-
-
-    // console.log(vendors);
-    // console.log(vendors[0].coordinates);
-
     // these if's need to be last 
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading Maps";
