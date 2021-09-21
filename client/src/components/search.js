@@ -11,7 +11,6 @@ import {
     GoogleMap,
     useLoadScript,
     Marker,
-    InfoWindow,
 } from '@react-google-maps/api';
 
 // styling for the map

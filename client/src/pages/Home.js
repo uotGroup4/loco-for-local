@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Modal from "../components/Modal/Modal";
+import Modal from '../components/Modal/Modal'
 import VendorList from '../components/VendorList';
 
 import Auth from '../utils/auth';
@@ -16,7 +16,6 @@ import {
     GoogleMap,
     useLoadScript,
     Marker,
-    InfoWindow,
 } from '@react-google-maps/api';
 
 // styling for the map
@@ -55,56 +54,51 @@ const Home = () => {
     const { loading, data } = useQuery(QUERY_VENDORS);
 
     //for the modal set show
-    const [show, setShow] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
-    function showModal(vendor) {
-        // console.log(vendor.title)
-        setShow(true)
-        // console.log(show)
-    }
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
 
-    // ================= SAVE VENDOR START ================
-    // state to hold saved vendorId values
-    const [savedVendorIds, setSavedVendorIds] = useState(getSavedVendorIds());
+    // // ================= SAVE VENDOR START ================
+    // // state to hold saved vendorId values
+    // const [savedVendorIds, setSavedVendorIds] = useState(getSavedVendorIds());
 
-    const [saveVendor, { error }] = useMutation(SAVE_VENDOR);
+    // const [saveVendor, { error }] = useMutation(SAVE_VENDOR);
 
-    // set up useEffect to saveVendorIds list to localStorage
-    useEffect(() => {
-        return () => saveVendorIds(saveVendorIds);
-    })
+    // // set up useEffect to saveVendorIds list to localStorage
+    // useEffect(() => {
+    //     return () => saveVendorIds(saveVendorIds);
+    // })
 
-    // function to handle saving vendor to db
-    const handleSaveVendor = async (vendorId) => {
-        // find vendor and match id
-        const vendorToSave = vendors.vendorId === vendorId; // hmmm
+    // // function to handle saving vendor to db
+    // const handleSaveVendor = async (vendorId) => {
+    //     // find vendor and match id
+    //     const vendorToSave = vendors.vendorId === vendorId; // hmmm
 
-        // get token
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
+    //     // get token
+    //     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-        if (!token) {
-            return false;
-        }
+    //     if (!token) {
+    //         return false;
+    //     }
 
-        try {
-            const { data } = await saveVendor({
-                variables: { input: vendorToSave }
-            });
+    //     try {
+    //         const { data } = await saveVendor({
+    //             variables: { input: vendorToSave }
+    //         });
 
-            if (error) {
-                throw new Error('something went wrong');
-            }
+    //         if (error) {
+    //             throw new Error('something went wrong');
+    //         }
 
-            console.log(`handleSaveVendor ${data}`);
+    //         console.log(`handleSaveVendor ${data}`);
 
-            // if vendor successfully saves to user, save vendor id to state
-            setSavedVendorIds([...saveVendorIds, vendorToSave.vendorId]);
-        } catch (err) {
-            console.error(err);
-        }
-    }
+    //         // if vendor successfully saves to user, save vendor id to state
+    //         setSavedVendorIds([...saveVendorIds, vendorToSave.vendorId]);
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // }
     // ================= SAVE VENDOR END ================
 
 
@@ -114,15 +108,12 @@ const Home = () => {
 
     return (
         <section>
-            <container className="page-header">
-                <div className="" id="home">
+            <div className="center" id="search">
+                <h1 className="page-header">Loco for local</h1>
+            </div>
 
-                </div>
-
-
-            </container>
-
-
+            <div className="center">
+            </div>
 
             <div>
                 <div className="map-container">
@@ -145,18 +136,14 @@ const Home = () => {
                                 }}
                                 onClick={() => {
                                     setSelected(vendor);
-                                    showModal(vendor)
+                                    setOpenModal(true);
                                 }}
                             />
                         ))}
-                        <Modal
-                            props={selected}
-                            // website={selected.website}
-                            // title={selected.title} 
-                            onClose={() => setShow(false)} show={show}
-                        />
                     </GoogleMap>
                 </div>
+                {openModal && <Modal vendor={selected} closeModal={setOpenModal}/>}
+            </div>
 
                 {/* Testing out vendor list */}
                 <div>
@@ -165,11 +152,12 @@ const Home = () => {
                     ) : (
                         <VendorList vendors={vendors} title="Vendor List" />
                     )}
+
                 </div>
                 <p>
                     Add a brief description of how to search with a h1
                 </p>
-            </div>
+            
 
         </section>
 
