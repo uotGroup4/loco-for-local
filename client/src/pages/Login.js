@@ -27,6 +27,7 @@ const Login = (props) => {
         variables: { ...formState },
       });
 
+      // console.log(data);
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
@@ -40,12 +41,40 @@ const Login = (props) => {
   };
 
   return (
-    <div>
-        <form onSubmit={handleFormSubmit}> 
-            {/* input - onChange={handleChange} goes in here */}
-        </form>
-        {error && <div>Login failed</div>}
-    </div>
+    <main className="">
+      <div className="">
+        <div className="">
+          <h4 className="">Login</h4>
+          <div className="">
+            <form onSubmit={handleFormSubmit}>
+              <input
+                className="form-input"
+                placeholder="Your email"
+                name="email"
+                type="email"
+                id="email"
+                value={formState.email}
+                onChange={handleChange}
+              />
+              <input
+                className="form-input"
+                placeholder="******"
+                name="password"
+                type="password"
+                id="password"
+                value={formState.password}
+                onChange={handleChange}
+              />
+              <button className="" type="submit">
+                Submit
+              </button>
+            </form>
+
+            {error && <div>Login failed</div>}
+          </div>
+        </div>
+      </div>
+    </main>
   );
 };
 
