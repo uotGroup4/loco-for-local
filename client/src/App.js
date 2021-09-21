@@ -22,6 +22,7 @@ import {
   InMemoryCache,
   createHttpLink
 } from '@apollo/react-hooks';
+import { setContext } from '@apollo/client/link/context';
 
 
 // we need to establish the connection to the back-end server's /graphql endpoint. establish a new link to the GraphQL server at its /graphql endpoint with createHttpLink()
@@ -29,9 +30,20 @@ const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
+// retrieve token (for logged in user) and combine with existing httpLink
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: { 
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
 // instantiate a new cache object using new InMemoryCache()
 const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
