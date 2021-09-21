@@ -1,5 +1,5 @@
 import React from "react";
-import '../Modal/Modal.css'
+// import '../Modal/Modal.css'
 
 function Modal({closeModal, vendor}) {
     console.log(vendor)
