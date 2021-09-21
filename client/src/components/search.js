@@ -105,10 +105,10 @@ const Search = () => {
                         <VendorList vendors={vendors} title="Vendor List" />
                     )}
                 </div>
+
                 <p>
                     Add a brief description of how to search with a h1
                 </p>
-            </div>
         </section>
     );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import '../Modal/Modal.css'
+import { Link } from 'react-router-dom';
 
 function Modal({closeModal, vendor}) {
     return (
@@ -13,7 +14,7 @@ function Modal({closeModal, vendor}) {
                 <div className='body'>
                     <p>{vendor.location}</p> 
                     <br />
-                    <p>{vendor.website}</p>
+                    <p><Link to={vendor.website}>{vendor.website}</Link></p>
                 </div>
                 <div className='footer'>
                     <button onClick={() => closeModal(false)} id="cancelBtn">Cancel</button>
