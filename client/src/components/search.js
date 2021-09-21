@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from "./Modal/Modal";
+import VendorList from '../components/VendorList';
 
 // integrate apollo hooks in homepage
 import { useQuery } from '@apollo/client';
@@ -68,8 +69,10 @@ const Search = () => {
             <div className="center" id="search">
                 <h1 className="page-header">Loco for local</h1>
             </div>
+
             <div className="center">
             </div>
+
             <div>
                 <div className="map-container">
                     <GoogleMap
@@ -95,11 +98,20 @@ const Search = () => {
                         ))}
                             <Modal
                                 props={selected}
-                                website={selected.website}
-                                title={selected.title} 
+                                // website={selected.website}
+                                // title={selected.title} 
                                 onClose={() => setShow(false)} show={show} 
                             />
                     </GoogleMap>
+                </div>
+
+                {/* Testing out vendor list */}
+                <div>
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <VendorList vendors={vendors} title="Vendor List" />
+                    )}
                 </div>
                 <p>
                     Add a brief description of how to search with a h1

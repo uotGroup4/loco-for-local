@@ -1,31 +1,52 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
 
-function Nav(props) {
-    const { currentTab, setCurrentTab } = props;
+const Nav = () => {
+    const logout = event => {
+        event.preventDefault();
+        Auth.logout();
+    };
 
     return (
         <nav>
-
             <ul className="flex-row mobile-view">
-                <li className={currentTab === "about" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("search")}>Search</span>
+                <li className="mx-2 navActive">
+                    <Link to='/'>
+                        Search
+                    </Link>
                 </li>
-
-                <li className={currentTab === "register" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("register")}>Register</span>
+                <li className="mx-2 navActive">
+                    <Link to='/signup'>
+                        Register
+                    </Link>
                 </li>
-                <li className={currentTab === "contact" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("contact")}>Contact</span>
+                <li className="mx-2 navActive">
+                    <Link to='/contact'>
+                        Contact
+                    </Link>
                 </li>
-                <li className={currentTab === "profile" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("profile")}>Profile</span>
-                </li>
-                <li className={currentTab === "login" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("login")}>Login</span>
-                </li>
+                {Auth.loggedIn() ? (
+                    <>
+                        <li className="mx-2 navActive">
+                            <Link to="/dashboard">Dashboard</Link>
+                        </li>
+                        <li className="mx-2 navActive">
+                            <a href="/" onClick={logout}>
+                                Logout
+                            </a>
+                        </li>
+                    </>
+                ) : (
+                    <li className="mx-2 navActive">
+                        <Link to='/login'>
+                            Login
+                        </Link>
+                    </li>
+                )}
             </ul>
         </nav>
     );
-}
+};
 
 export default Nav;
