@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 const Nav = () => {
+    const logout = event => {
+        event.preventDefault();
+        Auth.logout();
+    };
+
     return (
         <nav>
             <ul className="flex-row mobile-view">
@@ -20,16 +26,24 @@ const Nav = () => {
                         Contact
                     </Link>
                 </li>
-                <li className="mx-2 navActive">
-                    <Link to='/dashboard'>
-                        Dashboard
-                    </Link>
-                </li>
-                <li className="mx-2 navActive">
-                    <Link to='/login'>
-                        Login
-                    </Link>
-                </li>
+                {Auth.loggedIn() ? (
+                    <>
+                        <li className="mx-2 navActive">
+                            <Link to="/dashboard">Dashboard</Link>
+                        </li>
+                        <li className="mx-2 navActive">
+                            <a href="/" onClick={logout}>
+                                Logout
+                            </a>
+                        </li>
+                    </>
+                ) : (
+                    <li className="mx-2 navActive">
+                        <Link to='/login'>
+                            Login
+                        </Link>
+                    </li>
+                )}
             </ul>
         </nav>
     );
