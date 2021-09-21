@@ -52,7 +52,7 @@ function App() {
               <Route exact path='/' component={Search} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
-              <Route exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/dashboard/:username?' component={Dashboard} />
 
               <Route component={NoMatch} />
             </Switch>

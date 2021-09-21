@@ -1,31 +1,38 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
-function Nav(props) {
-    const { currentTab, setCurrentTab } = props;
-
+const Nav = () => {
     return (
         <nav>
-
             <ul className="flex-row mobile-view">
-                <li className={currentTab === "about" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("search")}>Search</span>
+                <li className="mx-2 navActive">
+                    <Link to='/'>
+                        Search
+                    </Link>
                 </li>
-
-                <li className={currentTab === "register" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("register")}>Register</span>
+                <li className="mx-2 navActive">
+                    <Link to='/signup'>
+                        Register
+                    </Link>
                 </li>
-                <li className={currentTab === "contact" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("contact")}>Contact</span>
+                <li className="mx-2 navActive">
+                    <Link to='/contact'>
+                        Contact
+                    </Link>
                 </li>
-                <li className={currentTab === "profile" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("profile")}>Profile</span>
+                <li className="mx-2 navActive">
+                    <Link to='/dashboard'>
+                        Dashboard
+                    </Link>
                 </li>
-                <li className={currentTab === "login" ? "mx-2 navActive" : "mx-2"}>
-                    <span onClick={() => setCurrentTab("login")}>Login</span>
+                <li className="mx-2 navActive">
+                    <Link to='/login'>
+                        Login
+                    </Link>
                 </li>
             </ul>
         </nav>
     );
-}
+};
 
 export default Nav;
