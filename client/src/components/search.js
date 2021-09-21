@@ -42,14 +42,20 @@ const Search = () => {
         libraries
     });
 
+    // useState to get the state of the selected marker
     const [selected, setSelected] = React.useState(null)
-    console.log(selected);
+
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_VENDORS);
 
     //for the modal set show
     const [show, setShow] = useState(false);
 
+    function showModal(vendor) {
+        // console.log(vendor.title)
+        setShow(true)
+        // console.log(show)
+    }
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
 
@@ -71,9 +77,6 @@ const Search = () => {
                         zoom={10}
                         center={center}
                         options={options}
-                        onClick={(event) => {
-                            console.log(event)
-                        }}
                     >
                         {/* embbed markers inside maps component */}
                         {vendors.map((vendor) => (
@@ -86,20 +89,16 @@ const Search = () => {
                                 }}
                                 onClick={() => {
                                     setSelected(vendor);
+                                    showModal(vendor)
                                 }}
                             />
                         ))}
-                        {selected ? (<InfoWindow position={{ lat: parseFloat(selected.coordinates[1]), lng: parseFloat(selected.coordinates[0]) }} onCloseClick={() => {
-                            setSelected(null)
-                        }}>
-                            <div className="App">
-                                <button onClick={() => setShow(true)}>Show Modal</button>
-                                <Modal title="My Modal" onClose={() => setShow(false)} show={show}>
-                                    <p>Modal body content</p>
-                                </Modal>
-                            </div>
-                        </InfoWindow>
-                        ) : null}
+                            <Modal
+                                props={selected}
+                                website={selected.website}
+                                title={selected.title} 
+                                onClose={() => setShow(false)} show={show} 
+                            />
                     </GoogleMap>
                 </div>
                 <p>
