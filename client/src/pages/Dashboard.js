@@ -16,10 +16,6 @@ const Dashboard = (props) => {
     const { loading, data } = useQuery(GET_ME);
     const [removeVendor, { error }] = useMutation(REMOVE_VENDOR);
 
-    // const { loading, data } = useQuery(userParam ? GET_ME : {
-    //     variables: { username: userParam },
-    // });
-
     // const vendor = data?.vendors || [];
 
     const userData = data?.me || {};
@@ -35,14 +31,14 @@ const Dashboard = (props) => {
         return <div>Loading...</div>;
     }
 
-    // if (!userData?.username) {
-    //     return (
-    //         <h4>
-    //             You need to be logged in to see this. Use the navigation links above to
-    //             sign up or log in!
-    //         </h4>
-    //     );
-    // }
+    if (!userData?.username) {
+        return (
+            <h4>
+                You need to be logged in to see this. Use the navigation links above to
+                sign up or log in!
+            </h4>
+        );
+    }
 
     // funciton to accept vendors _id value as param and delete vendor from user db
     const handleDeleteVendor = async (vendorId) => {
