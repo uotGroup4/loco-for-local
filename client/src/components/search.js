@@ -50,15 +50,11 @@ const Search = () => {
     const { loading, data } = useQuery(QUERY_VENDORS);
 
     //for the modal set show
-    const [show, setShow] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
-    function showModal(vendor) {
-        // console.log(vendor.title)
-        setShow(true)
-        // console.log(show)
-    }
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
+
 
     // these if's need to be last they load the map
     if (loadError) return "Error loading map";
@@ -92,17 +88,13 @@ const Search = () => {
                                 }}
                                 onClick={() => {
                                     setSelected(vendor);
-                                    showModal(vendor)
+                                    setOpenModal(true);
                                 }}
                             />
-                        ))}
-                            <Modal
-                                props={selected}
-                                // website={selected.website}
-                                // title={selected.title} 
-                                onClose={() => setShow(false)} show={show} 
-                            />
+                        ))}                      
                     </GoogleMap>
+                </div>
+                {openModal && <Modal vendor={selected} closeModal={setOpenModal}/>}
                 </div>
 
                 {/* Testing out vendor list */}

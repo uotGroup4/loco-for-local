@@ -1,48 +1,27 @@
-import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
-import { CSSTransition } from "react-transition-group";
-import "./Modal.css";
+import React from "react";
+import '../Modal/Modal.css'
 
-const Modal = props => {
-    const closeOnEscapeKeyDown = e => {
-        if ((e.charCode || e.keyCode) === 27) {
-            props.onClose();
-        }
-    };
-
-    useEffect(() => {
-        document.body.addEventListener("keydown", closeOnEscapeKeyDown);
-        return function cleanup() {
-            document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
-        };
-    }, []);
-
-    console.log(props)
-    console.log(props.title)
-    console.log(props.website)
-
-    return ReactDOM.createPortal(
-        <CSSTransition
-            in={props.show}
-            unmountOnExit
-            timeout={{ enter: 0, exit: 300 }}
-        >
-            <div className="modal" onClick={props.onClose}>
-                <div className="modal-content" onClick={e => e.stopPropagation()}>
-                    <div className="modal-header">
-                        <h4 className="modal-title">{props.title}</h4>
-                    </div>
-                    <div className="modal-body">
-                        <p>{props.website}</p>
-                    </div>
-                    <div className="modal-footer">
-                        <button onClick={props.onClose} className="button">Close</button>
-                    </div>
+function Modal({closeModal, vendor}) {
+    return (
+        <div className='modalBackground'>
+            <div className='modalContainer'>
+                <div className='titleCloseBtn'>
+                    <button onClick={() => closeModal(false)}> X </button>
+                </div>
+                <div className='title'></div>
+                    <h1 id='modalTitle'>{vendor.title}</h1>
+                <div className='body'>
+                    <p>{vendor.location}</p> 
+                    <br />
+                    <p>{vendor.website}</p>
+                </div>
+                <div className='footer'>
+                    <button onClick={() => closeModal(false)} id="cancelBtn">Cancel</button>
+                    <button>Favorites</button>
                 </div>
             </div>
-        </CSSTransition>,
-        document.getElementById("root")
-    );
-};
+        </div>
+    )
+}
 
-export default Modal;
+export default Modal
