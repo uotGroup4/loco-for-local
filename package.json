@@ -21,5 +21,8 @@
   "homepage": "https://github.com/uotGroup4/loco-for-local#readme",
   "devDependencies": {
     "concurrently": "^6.2.1"
+  },
+  "dependencies": {
+    "@reach/combobox": "^0.16.1"
   }
 }
