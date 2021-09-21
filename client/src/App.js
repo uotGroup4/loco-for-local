@@ -5,7 +5,7 @@ import React, { useState } from "react"
 //import Profile from './components/profile';
 import Header from "./components/header";
 import Footer from "./components/footer";
-import Search from "./components/search";
+import Home from "./pages/Home";
 // import * as parksData from "./data/skateboard-parks.json";
 
 // import react router dom
@@ -34,7 +34,7 @@ const httpLink = createHttpLink({
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
-    headers: { 
+    headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : '',
     },
@@ -49,7 +49,7 @@ const client = new ApolloClient({
 
 function App() {
 
-  const [currentTab, setCurrentTab] = useState("search");
+  const [currentTab, setCurrentTab] = useState("home");
 
   return (
 
@@ -61,7 +61,7 @@ function App() {
           </div>
           <main className="container">
             <Switch>
-              <Route exact path='/' component={Search} />
+              <Route exact path='/' component={Home} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/dashboard/:username?' component={Dashboard} />
@@ -69,9 +69,11 @@ function App() {
               <Route component={NoMatch} />
             </Switch>
           </main>
-          
-          <Footer></Footer>
-      
+
+          <Footer>
+
+          </Footer>
+
         </>
       </Router>
     </ApolloProvider>

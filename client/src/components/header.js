@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "./nav";
-import locologo from '../assets/icon/locologo.png'
+import locologo from '../assets/icon/lfl_greenTransp.png'
 
 
 
@@ -24,8 +24,8 @@ function Header(props) {
                     setCurrentTab={setCurrentTab}
                 ></Nav>
             </div>
-        </header>
+        </header >
     );
 }
-
 export default Header;
+
