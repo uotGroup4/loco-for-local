@@ -9,10 +9,22 @@ const VendorList = ({ vendors, title }) => {
                 vendors.map(vendor => (
                     <div key={vendor._id} className="card">
                         <p className="card-header">
-                            {vendor.title}
+                            <Link
+                                to={`/dashboard/${vendor.title}`}
+                                style={{ fontWeight: 700 }}
+                                className=""
+                            >
+                                {vendor.title}
+                                {/* SHOULD THIS LINK TO A VENDOR PAGE??? */}
+                            </Link>
                         </p>
                         <div className="card-body">
-                            <p>{vendor.website}</p>
+                            <Link
+                            // THIS SHOULD LINK TO VENDOR WEBSITE -- CURRENTLY LINKS TO localhost:3000/http://vendorwebsite
+                                to={`${vendor.website}`}
+                            >
+                                <p>{vendor.website}</p>
+                            </Link>
                             <p>{vendor.image}</p>
                             <p>{vendor.location}</p>
                         </div>
