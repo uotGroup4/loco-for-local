@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from "./Modal/Modal";
 import VendorList from '../components/VendorList';
 
@@ -13,6 +13,21 @@ import {
     Marker,
     InfoWindow,
 } from '@react-google-maps/api';
+
+import usePlacesAutocomplete, {
+    getGeocode,
+    getLatLng,
+} from 'use-places-autocomplete';
+
+// api for reachcombobox (does wonders to work with comboboxes)
+import {
+    Combobox,
+    ComboboxInput,
+    ComboboxPopover,
+    ComboboxList,
+    ComboboxOption,
+} from "@reach/combobox";
+import "@reach/combobox/styles.css"
 
 // styling for the map
 import mapStyles from '../mapStyles';
@@ -65,10 +80,7 @@ const Search = () => {
             <div className="center" id="search">
                 <h1 className="page-header">Loco for local</h1>
             </div>
-
-            <div className="center">
-            </div>
-
+            <SearchBar />
             <div>
                 <div className="map-container">
                     <GoogleMap
@@ -95,7 +107,7 @@ const Search = () => {
                     </GoogleMap>
                 </div>
                 {openModal && <Modal vendor={selected} closeModal={setOpenModal}/>}
-                </div>
+            </div>
 
                 {/* Testing out vendor list */}
                 <div>
@@ -113,4 +125,35 @@ const Search = () => {
     );
 }
 
+function SearchBar() {
+    const {
+        ready, 
+        value, 
+        suggestions: { status, data}, 
+        setValue, 
+        clearSuggestions 
+    } = usePlacesAutocomplete({
+        requestOptions: {
+            location: { lat: () => 43.6532, lng: () => -79.3831 },
+            radius: 200 * 1000, 
+        },
+    });
+
+    return (
+        <Combobox 
+            onSelect={(address) => {
+                console.log(address);
+            }}
+        >
+            <ComboboxInput 
+                value={value} 
+                onChange={(e) => {
+                setValue(e.target.value);
+                }}
+                disabled={!ready}
+                placeholder="Enter an address"
+            />
+        </Combobox>)
+
+}
 export default Search;
