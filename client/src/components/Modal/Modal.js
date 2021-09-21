@@ -18,6 +18,8 @@ const Modal = props => {
     }, []);
 
     console.log(props)
+    console.log(props.title)
+    console.log(props.website)
 
     return ReactDOM.createPortal(
         <CSSTransition
@@ -30,7 +32,9 @@ const Modal = props => {
                     <div className="modal-header">
                         <h4 className="modal-title">{props.title}</h4>
                     </div>
-                    <div className="modal-body">{props.children}</div>
+                    <div className="modal-body">
+                        <p>{props.website}</p>
+                    </div>
                     <div className="modal-footer">
                         <button onClick={props.onClose} className="button">Close</button>
                     </div>
