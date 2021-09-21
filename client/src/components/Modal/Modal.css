@@ -1,53 +1,72 @@
-.modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-    pointer-events: none;
-  }
-  
-  .modal.enter-done {
-    opacity: 1;
-    pointer-events: visible;
-  }
-  
-  .modal.exit {
-    opacity: 0;
-  }
-  
-  .modal-content {
-    width: 500px;
-    background-color: #fff;
-    transition: all 0.3s ease-in-out;
-    transform: translateY(-200px);
-  }
-  
-  .modal.enter-done .modal-content {
-    transform: translateY(0);
-  }
-  
-  .modal.exit .modal-content {
-    transform: translateY(-200px);
-  }
-  
-  .modal-header,
-  .modal-footer {
-    padding: 10px;
-  }
-  
-  .modal-title {
-    margin: 0;
-  }
-  
-  .modal-body {
-    padding: 10px;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-  }
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modalContainer {
+  width: 500px;
+  height: 500px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  z-index: 10;
+}
+
+.modalContainer .title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.modalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.modalContainer .footer {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer .footer button {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#cancelBtn {
+  background-color: crimson;
+}
