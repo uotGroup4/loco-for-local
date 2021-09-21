@@ -34,7 +34,7 @@ const Dashboard = (props) => {
     if (!userData?.username) {
         return (
             <h4>
-                You need to be logged in to see this. Use the navigation links above to
+                You need to be logged in to see this. Use the links above to
                 sign up or log in!
             </h4>
         );
@@ -66,23 +66,30 @@ const Dashboard = (props) => {
         }
     };
 
-
-
     return (
         <div>
             <div className="">
                 <h2 className="">
-                    Viewing {userData ? `${userData.username}'s` : 'your'} profile.
+                    {userData ? `${userData.username}'s` : 'your'} dashboard
                 </h2>
             </div>
 
-            <div className="">
-                <div className="col-12 col-lg-3 mb-3">
-                    <VendorList
-                        username={userData.username}
-                        vendors={userData.vendors}
-                    />
-                </div>
+            <div className="savedVendors">
+                {userData.savedVendors.map((vendor) => {
+                    return (
+                        <div className="savedVendorsCard" key={vendor.vendorId}>
+                            {vendor.image ? <img src={vendor.image} alt={`${vendor.title}`} /> : null}
+                            <div className="svBody">
+                                <h3>{vendor.title}</h3>
+                                <p>{vendor.website}</p>
+                                <p>{vendor.location}</p>
+                                <button className="del-ven-btn" onClick={() => handleDeleteVendor(vendor.vendorId)}>
+                                    Remove Vendor
+                                </button>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     );
