@@ -9,7 +9,7 @@ import Search from "./components/search";
 // import * as parksData from "./data/skateboard-parks.json";
 
 // import react router dom
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import pages
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -39,23 +39,6 @@ function App() {
 
   const [currentTab, setCurrentTab] = useState("search");
 
-  const renderTab = () => {
-    switch (currentTab) {
-      case "search":
-        return <Search />;
-      //case "contact":
-      //return <Contact />;
-      //case "register":
-      //return <Register />;
-      //case "profile":
-      //return <Profile />;
-      //case "login":
-      //return <Login />;
-      default:
-        return null;
-    }
-  }
-
   return (
 
     <ApolloProvider client={client}>
@@ -65,13 +48,14 @@ function App() {
             <Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
           </div>
           <main className="container">
-            {renderTab()}
-            <Route exact path='/' component={Search} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/signup' component={Signup} />
-            <Route exact path='/dashboard' component={Dashboard} />
+            <Switch>
+              <Route exact path='/' component={Search} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/signup' component={Signup} />
+              <Route exact path='/dashboard' component={Dashboard} />
 
-            <Route component={NoMatch} />
+              <Route component={NoMatch} />
+            </Switch>
           </main>
           
           <Footer></Footer>
