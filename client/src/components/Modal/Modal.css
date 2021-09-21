@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
+  top: 0
 }
 
 .modalContainer {
@@ -27,6 +28,10 @@
   margin-top: 10px;
 }
 
+#modalTitle {
+  font-size: 2em;
+}
+
 .titleCloseBtn {
   display: flex;
   justify-content: flex-end;
@@ -42,10 +47,8 @@
 .modalContainer .body {
   flex: 50%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.7rem;
-  text-align: center;
+  flex-direction: column;
+  font-size: 1.5rem;
 }
 
 .modalContainer .footer {

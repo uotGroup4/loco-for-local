@@ -1,21 +1,23 @@
 import React from "react";
-// import '../Modal/Modal.css'
+import '../Modal/Modal.css'
 
 function Modal({closeModal, vendor}) {
-    console.log(vendor)
     return (
         <div className='modalBackground'>
             <div className='modalContainer'>
-                <button onClick={() => closeModal(false)}> X </button>
+                <div className='titleCloseBtn'>
+                    <button onClick={() => closeModal(false)}> X </button>
+                </div>
                 <div className='title'></div>
-                    <h1>{vendor.title}</h1>
+                    <h1 id='modalTitle'>{vendor.title}</h1>
                 <div className='body'>
-                    <p>{vendor.location}</p>
+                    <p>{vendor.location}</p> 
+                    <br />
                     <p>{vendor.website}</p>
                 </div>
                 <div className='footer'>
-                    <button onClick={() => closeModal(false)}>Cancel</button>
-                    <button>Save to Favourites</button>
+                    <button onClick={() => closeModal(false)} id="cancelBtn">Cancel</button>
+                    <button>Favorites</button>
                 </div>
             </div>
         </div>

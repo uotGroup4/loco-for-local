@@ -86,7 +86,6 @@ const Search = () => {
                                 onClick={() => {
                                     setSelected(vendor);
                                     setOpenModal(true);
-                                    // console.log(vendor.location);
                                 }}
                             />
                         ))}
