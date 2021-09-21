@@ -2,18 +2,20 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
 
+
 const Nav = () => {
     const logout = event => {
         event.preventDefault();
         Auth.logout();
     };
-
     return (
         <nav>
+
+
             <ul className="flex-row mobile-view">
                 <li className="mx-2 navActive">
                     <Link to='/'>
-                        Search
+                        Home
                     </Link>
                 </li>
                 <li className="mx-2 navActive">
@@ -46,7 +48,12 @@ const Nav = () => {
                 )}
             </ul>
         </nav>
+
+
     );
 };
+
+
+
 
 export default Nav;

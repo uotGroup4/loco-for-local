@@ -27,40 +27,75 @@ export const QUERY_VENDOR = gql`
     }
 `;
 
-// User information by username
-export const QUERY_USER = gql`
-    query user($username: String!) {
-        user(username: $username) {
-            _id
-            username
-            email
-            vendorCount
-            savedVendors {
-                _id
-                title
-                website
-                image
-                location
-            }
-            savedShops {
-                _id
-                title
-                website
-                image
-                location
-                description
-            }
-        }
-    }
-`;
+// // User information by username
+// export const QUERY_USER = gql`
+//     query user($username: String!) {
+//         user(username: $username) {
+//             _id
+//             username
+//             email
+//             vendorCount
+//             savedVendors {
+//                 _id
+//                 title
+//                 website
+//                 image
+//                 location
+//             }
+//             savedShops {
+//                 _id
+//                 title
+//                 website
+//                 image
+//                 location
+//                 description
+//             }
+//         }
+//     }
+// `;
 
-export const QUERY_ME = gql`
+// export const QUERY_ME = gql`
+//     {
+//         me {
+//             _id
+//             username
+//             email
+//             vendorCount
+//             savedVendors {
+//                 _id
+//                 title
+//                 website
+//                 image
+//                 location
+//             }
+//             savedShops {
+//                 _id
+//                 title
+//                 website
+//                 image
+//                 location
+//                 description
+//             }
+//         }
+//     }
+// `;
+
+// export const QUERY_ME_BASIC = gql`
+//     { 
+//         me {
+//             _id
+//             username
+//             email
+//         }
+//     }
+// `;
+
+export const GET_ME = gql`
     {
         me {
             _id
             username
             email
-            vendorCount
             savedVendors {
                 _id
                 title
@@ -68,24 +103,6 @@ export const QUERY_ME = gql`
                 image
                 location
             }
-            savedShops {
-                _id
-                title
-                website
-                image
-                location
-                description
-            }
-        }
-    }
-`;
-
-export const QUERY_ME_BASIC = gql`
-    { 
-        me {
-            _id
-            username
-            email
         }
     }
 `;
