@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Modal from "../components/Modal/Modal";
 import VendorList from '../components/VendorList';
 
+import Auth from '../utils/auth';
+
 // integrate apollo hooks in homepage
 import { useQuery } from '@apollo/client';
 import { QUERY_VENDORS } from '../utils/queries';
+import { saveVendorIds, getSavedVendorIds } from '../utils/localStorage';
+import { SAVE_VENDOR } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 // google react api libraries
 import {
@@ -59,6 +64,49 @@ const Home = () => {
     }
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
+
+    // ================= SAVE VENDOR START ================
+    // state to hold saved vendorId values
+    const [savedVendorIds, setSavedVendorIds] = useState(getSavedVendorIds());
+
+    const [saveVendor, { error }] = useMutation(SAVE_VENDOR);
+
+    // set up useEffect to saveVendorIds list to localStorage
+    useEffect(() => {
+        return () => saveVendorIds(saveVendorIds);
+    })
+
+    // function to handle saving vendor to db
+    const handleSaveVendor = async (vendorId) => {
+        // find vendor and match id
+        const vendorToSave = vendors.vendorId === vendorId; // hmmm
+
+        // get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const { data } = await saveVendor({
+                variables: { input: vendorToSave }
+            });
+
+            if (error) {
+                throw new Error('something went wrong');
+            }
+
+            console.log(`handleSaveVendor ${data}`);
+
+            // if vendor successfully saves to user, save vendor id to state
+            setSavedVendorIds([...saveVendorIds, vendorToSave.vendorId]);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    // ================= SAVE VENDOR END ================
+
 
     // these if's need to be last they load the map
     if (loadError) return "Error loading map";
