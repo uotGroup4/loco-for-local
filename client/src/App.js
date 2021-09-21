@@ -8,6 +8,14 @@ import Footer from "./components/footer";
 import Search from "./components/search";
 // import * as parksData from "./data/skateboard-parks.json";
 
+// import react router dom
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import pages
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Signup from './pages/Signup';
+import NoMatch from './pages/NoMatch';
+
 import {
   ApolloProvider,
   ApolloClient,
@@ -51,16 +59,25 @@ function App() {
   return (
 
     <ApolloProvider client={client}>
-      <div className="mobile-header">
-        <Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
-      </div>
-      <main>
-        {renderTab()}
-      </main>
-      <div>
-        <Footer></Footer>
-      </div>
+      <Router>
+        <>
+          <div className="mobile-header">
+            <Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
+          </div>
+          <main className="container">
+            {renderTab()}
+            <Route exact path='/' component={Search} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/signup' component={Signup} />
+            <Route exact path='/dashboard' component={Dashboard} />
 
+            <Route component={NoMatch} />
+          </main>
+          
+          <Footer></Footer>
+      
+        </>
+      </Router>
     </ApolloProvider>
   );
 }

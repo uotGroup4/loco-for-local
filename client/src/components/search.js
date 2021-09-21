@@ -95,8 +95,8 @@ const Search = () => {
                         ))}
                             <Modal
                                 props={selected}
-                                website={selected.website}
-                                title={selected.title} 
+                                // website={selected.website}
+                                // title={selected.title} 
                                 onClose={() => setShow(false)} show={show} 
                             />
                     </GoogleMap>
