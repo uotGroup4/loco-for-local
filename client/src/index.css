@@ -1,47 +1,85 @@
- /* styles for components starts here
+ /* styles for components starts here */
 
-:root {
-  --primary:RGB(143, 62, 63);
-  --secondary:white;
-  --tertiary:rgba(163, 127, 80, 0.815);
-  --quaternary:#adad9f;
-  --spacing-one: calc(1rem * 0.5);
-	--spacing-two: calc(1rem);
-	--spacing-five: calc(2.5rem)
-}
-main {
+ main {
 	margin: 0 auto;
 	max-width: 90%;
 	padding: 50px 30px;
 }
-/* body {
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	min-height: 100%;
+}
+
+body {
 	margin: 0;
 	padding: 0;
 	font-weight: 600;
 	line-height: 1.5;
 	font-size: 18px;
 	letter-spacing: .1em;
-	background: whitesmoke;
-	color: var(--primary);
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
-}
-.heading {
 	background: white;
-	display: flex;
-	justify-content: space-between;
-	padding: 1rem;
-	text-align: center;
-	color: var(--primary);
+	color: #01474ef3;
+	font-family:'Roboto', sans-serif;
 }
-*/
-a
-{
+/*-------------------------- NAV styles  ---------------------------------------------*/
+a{
     text-decoration: none;
-	color: var(--primary); 
-    
+	color: #01474ef3;
+	font-weight: bold;
+	border-radius: 5px;
+	font-weight: 600;
+	padding: 2px 4px;
+	margin-left: -2px;
+	margin-right: -2px;
+
+ }
+ a:hover {
+	text-decoration:overline;
+}
+ul li {
+	list-style: none;
 }
 
+nav li {
+	cursor: pointer;
+}
+.mx-2 {
+	margin-right: 8%;
+	
+}
+.navActive {
+	color: grey;
+}
+	.flex-row {
+		display: flex;
+		justify-content:end;
+		
+	}
+	
+	
+
+ /* .mx-2, .navActive {
+	color:#01474ef3;
+	font-weight: 600;
+	line-height: 1.5;
+	font-size: 18px;
+	letter-spacing: .1em;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	}
+	.center {
+		display: flex;
+		justify-content: center;
+		
+	}
+	*/
+	
+
+/* end nav section */
+
+ /* -----------------------h1  styles --------------------------------- */
 h1,
 h2,
 h3{
@@ -68,99 +106,28 @@ p {
 	margin-top: 0;
 }
 
-.center {
-	display: flex;
-	justify-content: center;
-	
-}
+/* ------------------------ map styles start  here ------------------------------------*/
 
- .page-header {
-	font-family: 'Birthstone Bounce', cursive;
-	font-size: 3.5em;
-	font-weight: 500;
-	margin: 5px 0;
-	line-height: 1.25;
-	padding-bottom: 5rem;
-	
-	} 
-	
-
-span[role="img"] {
-	cursor: default;
-}
-
-
-
-/* map section */
 
 .map-container {
 
-margin-top: 10%;
+margin-top: 15%;
 }
 
 
 /*map section styling ends */
 
-/*nav section starts  */
 
-ol li {
-	list-style: inside;
-}
-
-ul li {
-	list-style: none;
-}
-
-nav li {
-	cursor: pointer;
-}
-.navActive {
-	color: var(--tertiary);
-	
-}
-.mx-2, .navActive {
-	color:#01474ef3;
-	font-weight: 600;
-	line-height: 1.5;
-	font-size: 18px;
-	letter-spacing: .1em;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	
-}
-
-/* end nav section */
-
+/* ------------------------------logo ------------------------------------------------------*/
 img {
 	max-width: 15%;
 	float: left;
-	
+	position:absolute;
 }
-.container {
-	width: 85%;
-	max-width: 1200px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.flex-row {
-	display: flex;
-	justify-content: space-evenly;
-	align-self: flex-end;
-
-}
-
-.space-between {
-	justify-content: space-between;
-	
-}
-
-.flex-end {
-	justify-content: flex-end;
-}
+/* logo */
 
 
-
-/* footer section starts  */
+/* ------------------------------  footer section starts ----------------------------------- */
 
 .footer {
 	margin:100px 0 0 0;
@@ -228,13 +195,16 @@ img {
 
 
 
-/* Viewports Styling start*/
+/* ----------------------------Viewports Styling start ---------------------------------------*/
 @media screen and (max-width: 980px) {}
 
 @media screen and (max-width: 817px) {
 	header div {
 		position: relative;
 		width: 110%;
+	}
+	nav ul li span {
+		font-size: 0.75em;
 	}
 
 	header div h2 {
@@ -243,15 +213,7 @@ img {
 		transform: translateY(-50%);
 	}
 
-	h2 {
-		font-size: 1.5rem;
-	}
-
-	nav ul li span {
-		font-size: 0.75em;
-	}
-
-	.mobile-header {
+		.mobile-header {
 		width: 110%;
 	}
 
@@ -276,3 +238,102 @@ img {
 @media screen and (max-width: 575px) {}
 
 /*  Viewports Styling end * */
+
+/* -----------------------LOGIN ----------------------------- */
+
+.mainlogin{
+	background: rgb(34,193,195);
+	background: linear-gradient(135deg, rgb(2, 105, 107) 0%,     rgb(250, 96, 24) 100%);
+	font-family: "work sans";
+	margin-top: 10%;
+	
+  }
+  
+  html{
+	font-size: 100%;
+  }
+  
+  .loginform{
+	max-width: 500px;
+	min-width: 300px;
+	max-height: 700px;
+	width: 30%;
+	height: 60%;
+	margin: 100px auto;
+	background-color: #FFFFFF;
+	border-radius: 25px;
+  }
+  
+  .headerTitle{
+	text-align: center;
+	font-family: 'open sans', sans-serif;
+	padding: 2rem 0;
+	margin: 0;
+	font-size: 2rem;
+  }
+  
+  .row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 2rem;
+	max-width: 100%;
+	
+  }
+  
+  .row input{
+	width: 80%;
+	box-sizing: border-box;
+	border: none;
+	font-size: 1.3rem;
+	padding-left: 1.5rem;
+	padding-bottom: 1rem;
+	box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+	transition: box-shadow 0.2s ease-in;
+	
+  }
+  
+  .row input:focus{
+	 box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+	 outline: none;
+  }
+  
+  .row input::-webkit-input-placeholder{
+	opacity: 1;
+	transition: opacity 0.25s ease-out;
+  }
+  
+  .row input:hover::-webkit-input-placeholder,
+  .row input:focus::-webkit-input-placeholder{
+	opacity: 0;
+  }
+  
+  .row label{
+	align-self: start;
+	padding-left: 4.5rem;
+	padding-bottom: 0.5rem;
+	color: rgba(187,187,187,0.9);
+  }
+  
+  .row button{
+	border-radius: 25px;
+	width: 80%;
+	height: 40px;
+	font-size: 25px;
+	color: white;
+	font-weight: 700;
+	background: #01474ef3;
+	
+	border: 0px;
+	cursor: pointer;
+	transition: opacity 0.25s ease-out;
+  }
+  
+  .row button:hover{
+	opacity: 0.8;
+  }
+  
+  .button{
+	padding-bottom: 1.5rem;
+  }
+  
