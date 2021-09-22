@@ -17,7 +17,8 @@ import {
 
 import usePlacesAutocomplete, {
     getGeocode,
-    getLatLng, } 
+    getLatLng,
+}
     from 'use-places-autocomplete';
 
 // REACH Combobox styles
@@ -27,7 +28,7 @@ import {
     ComboboxPopover,
     ComboboxList,
     ComboboxOption,
-    } from "@reach/combobox";
+} from "@reach/combobox";
 
 import "@reach/combobox/styles.css"
 
@@ -39,6 +40,7 @@ const libraries = ['places'];
 const mapContainerStyle = {
     width: "80vw",
     height: "80vh",
+
 };
 
 // lat/lng for toronto
@@ -77,7 +79,7 @@ const Home = () => {
         mapRef.current = map;
     }, []);
 
-    const panTo = React.useCallback(({lat, lng}) => {
+    const panTo = React.useCallback(({ lat, lng }) => {
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
     }, []);
@@ -91,20 +93,20 @@ const Home = () => {
         <section>
 
             <div className="center" id="search">
-                <h1 className="page-header">Loco for local</h1>
+
             </div>
 
             <div>
                 <div className="map-container">
                     {/* <Search panTo={panTo} /> */}
-                    <Locate panTo={panTo} />
+                    {/* < Locate panTo={panTo} /> */}
                     <GoogleMap
                         mapContainerStyle={mapContainerStyle}
                         zoom={10}
                         center={center}
                         options={options}
                         onLoad={onMapLoad}
-                        // resetBoundsOnResize={true} //to resize the map without changing integrity
+                    // resetBoundsOnResize={true} //to resize the map without changing integrity
 
                     >
                         {/* embbed markers inside maps component */}
@@ -124,74 +126,75 @@ const Home = () => {
                         ))}
                     </GoogleMap>
                 </div>
-                {openModal && <Modal vendor={selected} closeModal={setOpenModal}/>}
+                {openModal && <Modal vendor={selected} closeModal={setOpenModal} />}
             </div>
 
-                {/* Testing out vendor list */}
-                <div>
-                    {loading ? (
-                        <div>Loading...</div>
-                    ) : (
-                        <VendorList vendors={vendors} title="Vendor List" />
-                    )}
-                </div>
-                <p>
-                    Add a brief description of how to search with a h1
+            {/* Testing out vendor list */}
+            <div>
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <VendorList vendors={vendors} title="Vendor List" />
+                )}
+            </div>
+            <p>
+                Add a brief description of how to search with a h1
                 </p>
         </section>
     );
 }
 
-function Locate({panTo}) {
+function Locate({ panTo }) {
     return (
         <button className="locate" onClick={() => {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    panTo({lat: position.coords.latitude, lng: position.coords.longitude
+                    panTo({
+                        lat: position.coords.latitude, lng: position.coords.longitude
                     });
-                }, 
+                },
                 () => null
             );
-        }}> 
-        <img src='compass.svg' alt="compass - locate me" />
+        }}>
+            <img src='compass.svg' alt="compass - locate me" />
         </button>
     )
 }
 
-function Search({panTo}) {
-    const { 
-        ready, 
-        value, 
-        suggestions: {status, data}, 
-        setValue, 
-        clearSuggestions 
+function Search({ panTo }) {
+    const {
+        ready,
+        value,
+        suggestions: { status, data },
+        setValue,
+        clearSuggestions
     } = usePlacesAutocomplete({
         requestOptions: {
-            location: {lat: () => 43.6532, lng: () => -79.3831},
+            location: { lat: () => 43.6532, lng: () => -79.3831 },
             radius: 20000,
         },
     });
 
     return (
         <div className='search'>
-            <Combobox 
-                onSelect={ async (address) => {
+            <Combobox
+                onSelect={async (address) => {
                     setValue(address, false);
                     clearSuggestions();
                     // console.log(address)
-                        try {
-                            const results = await getGeocode({address});
-                            // console.log(results)
-                            const { lat, lng } = await getLatLng(results[0]);
-                            // console.log(lat, lng);
-                            panTo({ lat, lng });
-                        }catch(error){
-                            console.log(error);
-                        }
+                    try {
+                        const results = await getGeocode({ address });
+                        // console.log(results)
+                        const { lat, lng } = await getLatLng(results[0]);
+                        // console.log(lat, lng);
+                        panTo({ lat, lng });
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }}
-                >
-                <ComboboxInput 
-                    value ={value} 
+            >
+                <ComboboxInput
+                    value={value}
                     onChange={(e) => {
                         setValue(e.target.value);
                     }}
@@ -200,8 +203,8 @@ function Search({panTo}) {
                 />
                 <ComboboxPopover>
                     <ComboboxList>
-                        {status === "OK" && data.map(({id, description}) => (
-                        <ComboboxOption key={id} value={description} />
+                        {status === "OK" && data.map(({ id, description }) => (
+                            <ComboboxOption key={id} value={description} />
                         ))}
                     </ComboboxList>
                 </ComboboxPopover>
