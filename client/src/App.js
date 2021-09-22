@@ -65,15 +65,10 @@ function App() {
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/dashboard/:username?' component={Dashboard} />
-
               <Route component={NoMatch} />
             </Switch>
-
+          <Footer />
           </main>
-
-          <Footer>
-
-          </Footer>
 
         </>
       </Router>
