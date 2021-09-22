@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from "react"
 //import LoginButton from './components/login';
-// import LogoutButton from '.components/logout';
+
 //import Profile from './components/profile';
 import Nav from "./components/nav";
 import Footer from "./components/footer";
@@ -68,6 +68,7 @@ function App() {
 
               <Route component={NoMatch} />
             </Switch>
+
           </main>
 
           <Footer>

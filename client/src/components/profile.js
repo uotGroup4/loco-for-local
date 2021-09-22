@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  if(isLoading) {
+  if (isLoading) {
     return (
       <div>
         Loading....
@@ -19,8 +19,11 @@ const Profile = () => {
         <h2>{user.name}</h2>
         <p>Email: {user.email}</p>
       </div>
+
+
+
     )
-  ) 
+  )
 }
 
 export default Profile;

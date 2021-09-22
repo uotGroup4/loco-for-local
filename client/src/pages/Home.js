@@ -35,11 +35,13 @@ import "@reach/combobox/styles.css"
 // styling for the map
 import mapStyles from '../mapStyles';
 
+
 // set up options to pass to the googlemaps component (to avoid rerendering)
 const libraries = ['places'];
 const mapContainerStyle = {
-    width: "80vw",
+    width: "60vw",
     height: "80vh",
+
 
 };
 
@@ -85,6 +87,7 @@ const Home = () => {
     }, []);
 
 
+
     // these if's need to be last they load the map
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading Maps";
@@ -126,6 +129,7 @@ const Home = () => {
                         ))}
                     </GoogleMap>
                 </div>
+
                 {openModal && <Modal vendor={selected} closeModal={setOpenModal} />}
             </div>
 
@@ -137,9 +141,7 @@ const Home = () => {
                     <VendorList vendors={vendors} title="Vendor List" />
                 )}
             </div>
-            <p>
-                Add a brief description of how to search with a h1
-                </p>
+
         </section>
     );
 }
