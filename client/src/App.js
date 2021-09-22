@@ -15,6 +15,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import NoMatch from './pages/NoMatch';
+import About from './pages/About';
 
 import {
   ApolloProvider,
@@ -64,6 +65,7 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
+              <Route exact path='/about' component={About} />
               <Route exact path='/dashboard/:username?' component={Dashboard} />
               <Route component={NoMatch} />
             </Switch>
