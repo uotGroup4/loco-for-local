@@ -6,7 +6,7 @@
 	padding: 50px 30px;
 }
 * {
-	box-sizing: border-box;
+	box-sizing: border-box; 
 }
 html,
 body {
@@ -47,35 +47,25 @@ nav li {
 	cursor: pointer;
 }
 .mx-2 {
-	margin-right: 8%;
+	margin-right: 20%;
 	
 }
-.navActive {
-	color: grey;
-}
-	.flex-row {
-		display: flex;
-		justify-content:end;
-		
-	}
-	
-	
 
- /* .mx-2, .navActive {
-	color:#01474ef3;
-	font-weight: 600;
-	line-height: 1.5;
-	font-size: 18px;
-	letter-spacing: .1em;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	}
-	.center {
+.flex-row {
 		display: flex;
-		justify-content: center;
-		
+		flex-direction: row;
 	}
-	*/
+.row-container {
+	align-self: flex-end;
+	float:right;
 	
+}
+.top-container {
+		background-color: #f1f1f1;
+		padding: 10px;
+		display: flex;
+		
+	  }
 
 /* end nav section */
 
@@ -111,7 +101,7 @@ p {
 
 .map-container {
 
-margin-top: 15%;
+margin-top: 5%;
 }
 
 
@@ -119,10 +109,10 @@ margin-top: 15%;
 
 
 /* ------------------------------logo ------------------------------------------------------*/
-img {
-	max-width: 15%;
+.locologo{
 	float: left;
-	position:absolute;
+	
+	
 }
 /* logo */
 
@@ -130,9 +120,10 @@ img {
 /* ------------------------------  footer section starts ----------------------------------- */
 
 .footer {
-	margin:100px 0 0 0;
+	margin:70px 0 0 0;
 	background-color: whitesmoke;
 	color: #01474ef3;
+	position: relative;
   }
   
   .footer ul {
@@ -196,7 +187,7 @@ img {
 
 
 /* ----------------------------Viewports Styling start ---------------------------------------*/
-@media screen and (max-width: 980px) {}
+ /* @media screen and (max-width: 980px) {}
 
 @media screen and (max-width: 817px) {
 	header div {
@@ -246,12 +237,7 @@ img {
 	background: linear-gradient(135deg, rgb(2, 105, 107) 0%,     rgb(250, 96, 24) 100%);
 	font-family: "work sans";
 	margin-top: 10%;
-	
-  }
-  
-  html{
-	font-size: 100%;
-  }
+}
   
   .loginform{
 	max-width: 500px;

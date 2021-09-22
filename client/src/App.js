@@ -1,9 +1,9 @@
 import './App.css';
 import React, { useState } from "react"
 //import LoginButton from './components/login';
-// import LogoutButton from './components/logout';
+// import LogoutButton from '.components/logout';
 //import Profile from './components/profile';
-import Header from "./components/header";
+import Nav from "./components/nav";
 import Footer from "./components/footer";
 import Home from "./pages/Home";
 // import * as parksData from "./data/skateboard-parks.json";
@@ -57,7 +57,7 @@ function App() {
       <Router>
         <>
           <div className="mobile-header">
-            <Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
+            <Nav currentTab={currentTab} setCurrentTab={setCurrentTab}></Nav>
           </div>
           <main className="container">
             <Switch>
