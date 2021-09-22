@@ -242,6 +242,7 @@ p {
 	font-family: "work sans";
 	margin-top: 10%;
 	border-radius: 25px;
+	padding: 1px
 		
 		
 	  } 
@@ -315,7 +316,6 @@ p {
 	color: white;
 	font-weight: 700;
 	background: #01474ef3;
-	
 	border: 0px;
 	cursor: pointer;
 	transition: opacity 0.25s ease-out;
@@ -364,10 +364,63 @@ p {
 		font-size: .9em;
 	}
 
+	/* ----------------------- Dashboard ----------------------------- */
+
+	.removeButton {
+		border-radius: 25px;
+		width: 80%;
+		height: 40px;
+		font-size: 25px;
+		color: white;
+		font-weight: 700;
+		background: #01474ef3;
+		border: 0px;
+		cursor: pointer;
+		transition: opacity 0.25s ease-out;
+	}
+
+	.removeButton:hover{
+		opacity: 0.8;
+	}
+
+	.dashboard-cards{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.dashboard-card {
+		border: #01474ef3;
+    border-style: solid;
+    width: 400px;
+    height: auto;
+    text-align: center;
+    border-radius: 30px;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+		margin-top: 3%;
+	}
+
+	.dashboard-card h4 {
+		font-size: 2em;
+		margin: 0%;
+	}
+
+	.dashboard-card h5 {
+		margin: -10px 2px 12px 2px;
+	}
+
+	.dashboard-card p {
+		font-size: .9em;
+	}
+
 	@media screen and (max-width: 1400px) {
 		.card {
 			min-width: 360px;
 			min-height: 550px
 		}
 	}
+
 
