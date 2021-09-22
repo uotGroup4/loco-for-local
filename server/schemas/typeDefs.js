@@ -71,7 +71,7 @@ const typeDefs = gql `
         addVendor(title: String!, location: String!, website: String!, image: String, coordinates: String!): Vendor
         addShop(title: String!, location: String!, website: String!, image: String, description: String, coordinates: String!): Vendor
         saveVendor(input: vendorInput!): User
-        removeVendor(vendorId: String!): User
+        removeVendor(input: vendorInput!): User
         saveShop(input: shopInput!): User
         removeShop(shopId: String!): User
     }
