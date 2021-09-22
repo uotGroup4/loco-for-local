@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from '../components/Modal/Modal'
 import VendorList from '../components/VendorList';
 
-import Auth from '../utils/auth';
+// import Auth from '../utils/auth';
 
 // integrate apollo hooks in homepage
 import { useQuery } from '@apollo/client';
 import { QUERY_VENDORS } from '../utils/queries';
-
 
 // google react api libraries
 import {
@@ -15,6 +14,22 @@ import {
     useLoadScript,
     Marker,
 } from '@react-google-maps/api';
+
+import usePlacesAutocomplete, {
+    getGeocode,
+    getLatLng, } 
+    from 'use-places-autocomplete';
+
+// REACH Combobox styles
+import {
+    Combobox,
+    ComboboxInput,
+    ComboboxPopover,
+    ComboboxList,
+    ComboboxOption,
+    } from "@reach/combobox";
+
+import "@reach/combobox/styles.css"
 
 // styling for the map
 import mapStyles from '../mapStyles';
@@ -26,7 +41,7 @@ const mapContainerStyle = {
     height: "80vh",
 };
 
-// lat/lng for ottawa, toronto is lat: 43.6532, lng:-79.3831
+// lat/lng for toronto
 const center = {
     lat: 43.6532,
     lng: -79.3831
@@ -57,27 +72,39 @@ const Home = () => {
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
 
+    const mapRef = React.useRef();
+    const onMapLoad = React.useCallback((map) => {
+        mapRef.current = map;
+    }, []);
+
+    const panTo = React.useCallback(({lat, lng}) => {
+        mapRef.current.panTo({ lat, lng });
+        mapRef.current.setZoom(14);
+    }, []);
+
+
     // these if's need to be last they load the map
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading Maps";
 
     return (
         <section>
+
             <div className="center" id="search">
                 <h1 className="page-header">Loco for local</h1>
             </div>
 
-            <div className="center">
-            </div>
-
             <div>
                 <div className="map-container">
+                    {/* <Search panTo={panTo} /> */}
+                    <Locate panTo={panTo} />
                     <GoogleMap
                         mapContainerStyle={mapContainerStyle}
                         zoom={10}
                         center={center}
                         options={options}
-                        resetBoundsOnResize={true} //to resize the map without changing integrity
+                        onLoad={onMapLoad}
+                        // resetBoundsOnResize={true} //to resize the map without changing integrity
 
                     >
                         {/* embbed markers inside maps component */}
@@ -107,17 +134,79 @@ const Home = () => {
                     ) : (
                         <VendorList vendors={vendors} title="Vendor List" />
                     )}
-
                 </div>
                 <p>
                     Add a brief description of how to search with a h1
                 </p>
-            
-
         </section>
-
-
     );
 }
 
+function Locate({panTo}) {
+    return (
+        <button className="locate" onClick={() => {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    panTo({lat: position.coords.latitude, lng: position.coords.longitude
+                    });
+                }, 
+                () => null
+            );
+        }}> 
+        <img src='compass.svg' alt="compass - locate me" />
+        </button>
+    )
+}
+
+function Search({panTo}) {
+    const { 
+        ready, 
+        value, 
+        suggestions: {status, data}, 
+        setValue, 
+        clearSuggestions 
+    } = usePlacesAutocomplete({
+        requestOptions: {
+            location: {lat: () => 43.6532, lng: () => -79.3831},
+            radius: 20000,
+        },
+    });
+
+    return (
+        <div className='search'>
+            <Combobox 
+                onSelect={ async (address) => {
+                    setValue(address, false);
+                    clearSuggestions();
+                    // console.log(address)
+                        try {
+                            const results = await getGeocode({address});
+                            // console.log(results)
+                            const { lat, lng } = await getLatLng(results[0]);
+                            // console.log(lat, lng);
+                            panTo({ lat, lng });
+                        }catch(error){
+                            console.log(error);
+                        }
+                }}
+                >
+                <ComboboxInput 
+                    value ={value} 
+                    onChange={(e) => {
+                        setValue(e.target.value);
+                    }}
+                    disabled={!ready}
+                    placeholder="Enter an address"
+                />
+                <ComboboxPopover>
+                    <ComboboxList>
+                        {status === "OK" && data.map(({id, description}) => (
+                        <ComboboxOption key={id} value={description} />
+                        ))}
+                    </ComboboxList>
+                </ComboboxPopover>
+            </Combobox>
+        </div>
+    )
+}
 export default Home;
