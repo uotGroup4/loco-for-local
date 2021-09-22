@@ -25,7 +25,7 @@ body {
 	font-family:'Roboto', sans-serif;
 }
 /*-------------------------- NAV styles  ---------------------------------------------*/
-a{
+ a{
     text-decoration: none;
 	color: #01474ef3;
 	font-weight: bold;
@@ -33,12 +33,12 @@ a{
 	font-weight: 600;
 	padding: 2px 4px;
 	margin-left: -2px;
-	margin-right: -2px;
+	margin-right: -2px; 
 
  }
  a:hover {
-	text-decoration:overline;
-}
+	text-decoration:overline;} 
+
 ul li {
 	list-style: none;
 }
@@ -47,26 +47,31 @@ nav li {
 	cursor: pointer;
 }
 .mx-2 {
-	margin-right: 20%;
-	
+	margin-right: 5%;
+	font-size: 20px;
 	
 }
 
-.flex-row {
-		display: flex;
-		flex-direction: row;
-	}
+
 .row-container {
 	align-self: flex-end;
-	float:right;
 	
-}
+	}
 .top-container {
 		background-color: #f1f1f1;
-		padding: 10px;
+		padding-right: 2.5%;
 		display: flex;
+		justify-content: space-between;
+		
 		
 	  }
+.flex-row {
+		display: flex;
+		justify-content: space-evenly;
+		align-self: flex-end;
+	
+	}
+	
 
 /* end nav section */
 
@@ -110,24 +115,13 @@ margin-top: 5%;
 
 
 /* ------------------------------logo ------------------------------------------------------*/
-.locologo{
+.locologo, .navlogo{
 	float: left;
+	position:relative;
 	
 }
 
-.flex-row {
-	display: flex;
-	justify-content: space-evenly;
-	align-self: flex-end;
-
-}
-
-.space-between {
-	justify-content: space-between;
-
-	
-}
-/* logo */
+/* logo ends  */
 
 
 /* ------------------------------  footer section starts ----------------------------------- */
@@ -247,11 +241,13 @@ margin-top: 5%;
 
 .mainlogin{
 	background: rgb(34,193,195);
-	background: linear-gradient(135deg, rgb(2, 105, 107) 0%,     rgb(250, 96, 24) 100%);
+	background: linear-gradient(200deg, rgb(2, 105, 107) 0%,     rgb(250, 96, 24) 100%);
 	font-family: "work sans";
 	margin-top: 10%;
-}
-  
+	border-radius: 25px;
+		
+		
+	  } 
   .loginform{
 	max-width: 500px;
 	min-width: 300px;

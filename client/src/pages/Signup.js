@@ -40,11 +40,11 @@ const Signup = () => {
   };
 
   return (
-    <main className="">
-      <div className="">
-        <div className="">
+    <main className="mainlogin">
+      <div className="loginform">
+        <div className="headerTitle">
           <h4 className="">Sign Up</h4>
-          <div className="">
+          <div className="row">
             <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
@@ -73,7 +73,7 @@ const Signup = () => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className="" type="submit">
+              <button className="row-input" type="submit">
                 Submit
               </button>
             </form>
