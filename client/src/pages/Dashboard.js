@@ -95,7 +95,7 @@ const Dashboard = (vendor) => {
                                     className="removeButton"
                                     id={vendor._id}
                                     onClick={() => handleRemoveVendor(vendor)}
-                                    >
+                                >
                                     Remove Vendor
                                 </button>
                             </div>

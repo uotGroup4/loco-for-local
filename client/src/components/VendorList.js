@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import Card from '../components/Card/card';
 import locologo from '../assets/icon/locologo.png'
 import "./Card/card.css"
+// YO WADDUP HOME BISCUIT
 
 const VendorList = ({ vendors, title }) => {
     return (
