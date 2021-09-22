@@ -41,11 +41,11 @@ const Login = (props) => {
   };
 
   return (
-    <main className="">
-      <div className="">
-        <div className="">
+    <main className="mainlogin">
+      <div className="loginform">
+        <div className="headerTitle">
           <h4 className="">Login</h4>
-          <div className="">
+          <div className="row">
             <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
@@ -65,7 +65,7 @@ const Login = (props) => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className="" type="submit">
+              <button className="rowinput" type="submit">
                 Submit
               </button>
             </form>
