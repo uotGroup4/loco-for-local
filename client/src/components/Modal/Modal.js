@@ -7,7 +7,15 @@ import { saveVendorIds, getSavedVendorIds } from '../../utils/localStorage';
 import { SAVE_VENDOR } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
-const Modal = ({ closeModal, vendor }) => {
+const Modal = ({ closeModal, vendor }) => {    
+    
+    // let disable = useState(false);
+    const handleSaveClick = async (event) => {
+        handleSaveVendor(vendor);
+        closeModal(false);
+        // disable(true);
+    };
+
     // ================= SAVE VENDOR START ================
     console.log(vendor)
     // state to hold saved vendorId values
@@ -70,13 +78,16 @@ const Modal = ({ closeModal, vendor }) => {
                     <button onClick={() => closeModal(false)} id="cancelBtn">Cancel</button>
                     {Auth.loggedIn() && (
                         <button 
-                            disabled={savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)}
-                            className=""
-                            onClick={() => handleSaveVendor(vendor)}>
-                            {savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)
+                            // disabled={savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)}
+                            disabled={false}
+                            className="save-favs-btn"
+                            onClick={() => handleSaveClick()}>
+                            
+                            {/* {savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)
                                 ? 'This vendor has already been saved'
                                 : 'Add to Favourites'
-                            }
+                            } */}
+                            Add to Favourites
                         </button>
                     )}
                 </div>
