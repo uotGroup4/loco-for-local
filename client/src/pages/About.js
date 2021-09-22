@@ -71,7 +71,7 @@ const About = () => {
                     </div>
                     <div className="card-title">
                         <h4>Shannon Nell</h4>
-                        <h5>Muscodeer Porthoss</h5>
+                        <h5>Muscodeer Porthos</h5>
                     </div>
                     <div className="card-body">
                         <p>Shannon teamed up with Said on the back end server side and focused on mutations and queries.</p>

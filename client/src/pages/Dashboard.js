@@ -4,18 +4,18 @@ import React from 'react';
 
 // import VendorList from '../components/VendorList';
 
-// import Auth from '../utils/auth';
-// import { removeVendorId } from '../utils/localStorage';
-// import { useQuery, useMutation } from '@apollo/client';
-import { useQuery } from '@apollo/client';
+import Auth from '../utils/auth';
+import { removeVendorId } from '../utils/localStorage';
+import { useQuery, useMutation } from '@apollo/client';
+// import { useQuery } from '@apollo/client';
 // import { QUERY_USER, QUERY_ME } from '../utils/queries';
-// import { REMOVE_VENDOR } from '../utils/mutations';
+import { REMOVE_VENDOR } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
 
 const Dashboard = (props) => {
     // const { username: userParam } = useParams();
     const { loading, data } = useQuery(GET_ME);
-    // const [removeVendor, { error }] = useMutation(REMOVE_VENDOR);
+    const [removeVendor, { error }] = useMutation(REMOVE_VENDOR);
 
     // const vendor = data?.vendors || [];
 
@@ -42,30 +42,30 @@ const Dashboard = (props) => {
     }
 
     // funciton to accept vendors _id value as param and delete vendor from user db
-    // const handleDeleteVendor = async (vendorId) => {
-    //     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const handleDeleteVendor = async (vendorId) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    //     if (!token) {
-    //         return false;
-    //     }
+        if (!token) {
+            return false;
+        }
 
-    //     try {
-    //         const { data } = await removeVendor({
-    //             variables: { vendorId }
-    //         });
+        try {
+            const { data } = await removeVendor({
+                variables: { vendorId }
+            });
 
-    //         console.log("vendor data:", data);
+            console.log("vendor data:", data);
 
-    //         if (error) {
-    //             throw new Error('Something went wrong');
-    //         }
+            if (error) {
+                throw new Error('Something went wrong');
+            }
 
-    //         //upon success, remove vendor's id from localstorage
-    //         removeVendorId(vendorId);
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // };
+            //upon success, remove vendor's id from localstorage
+            removeVendorId(vendorId);
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     return (
         <div>
@@ -75,18 +75,27 @@ const Dashboard = (props) => {
                 </h2>
             </div>
 
-            <div className="savedVendors">
+            <div className="about-cards">
                 {userData.savedVendors.map((vendor) => {
                     return (
-                        <div className="savedVendorsCard" key={vendor.vendorId}>
+                        <div className="card" key={vendor.vendorId}>
                             {vendor.image ? <img src={vendor.image} alt={`${vendor.title}`} /> : null}
                             <div className="svBody">
-                                <h3>{vendor.title}</h3>
-                                <p>{vendor.website}</p>
-                                <p>{vendor.location}</p>
-                                {/* <button className="del-ven-btn" onClick={() => handleDeleteVendor(vendor.vendorId)}> */}
-                                    {/* Remove Vendor
-                                </button> */}
+                                <div className="card-title">
+                                    <h4>{vendor.title}</h4>
+                                </div>
+                                <div className="card-body">
+                                    <p> 
+                                        <a href={vendor.website}>{vendor.website}</a>
+                                    </p>
+                                    <br />
+                                    <p>{vendor.location}</p>
+                                </div>
+                                <button 
+                                    className="row button" 
+                                    onClick={() => handleDeleteVendor(vendor.vendorId)}>
+                                    Remove Vendor
+                                </button>
                             </div>
                         </div>
                     )
