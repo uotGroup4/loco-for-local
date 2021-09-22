@@ -86,7 +86,7 @@ const Dashboard = (vendor) => {
                                 </div>
                                 <div className="card-body">
                                     <p>
-                                        <a href={vendor.website}>{vendor.website}</a>
+                                        <a href={vendor.website} target="_blank">{vendor.website}</a>
                                     </p>
                                     <br />
                                     <p>{vendor.location}</p>
