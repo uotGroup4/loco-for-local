@@ -112,6 +112,18 @@ margin-top: 5%;
 .locologo{
 	float: left;
 	
+}
+
+.flex-row {
+	display: flex;
+	justify-content: space-evenly;
+	align-self: flex-end;
+
+}
+
+.space-between {
+	justify-content: space-between;
+
 	
 }
 /* logo */
