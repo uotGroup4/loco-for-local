@@ -7,9 +7,6 @@ import VendorList from '../components/VendorList';
 // integrate apollo hooks in homepage
 import { useQuery } from '@apollo/client';
 import { QUERY_VENDORS } from '../utils/queries';
-// import { saveVendorIds, getSavedVendorIds } from '../utils/localStorage';
-// import { SAVE_VENDOR } from '../utils/mutations';
-// import { useMutation } from '@apollo/client';
 
 // google react api libraries
 import {
@@ -84,6 +81,7 @@ const Home = () => {
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
     }, []);
+
 
     // these if's need to be last they load the map
     if (loadError) return "Error loading map";

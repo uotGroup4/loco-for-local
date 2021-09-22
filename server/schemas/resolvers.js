@@ -73,21 +73,22 @@ const resolvers = {
         },
 
         // Add a vendor to the database
-        addVendor: async (parent, args) => {
-            const vendor = await Vendor.create(args);
+        // addVendor: async (parent, args) => {
+        //     const vendor = await Vendor.create(args);
 
-            return { vendor };
-        },
+        //     return { vendor };
+        // },
 
         // save a vendor to user favourites
         saveVendor: async (parent, { input }, context) => {
             if (context.user) {
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { saveVendor: input } },
+                    { $push: { savedVendors: input } },
                     { new: true }
                 );
 
+                //updatedUser.savedVendors = [{ title: vendor.title }]
                 return updatedUser;
             }
 
