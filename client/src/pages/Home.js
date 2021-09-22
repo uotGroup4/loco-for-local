@@ -35,7 +35,6 @@ import "@reach/combobox/styles.css"
 // styling for the map
 import mapStyles from '../mapStyles';
 
-
 // set up options to pass to the googlemaps component (to avoid rerendering)
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -84,23 +83,16 @@ const Home = () => {
         mapRef.current.setZoom(14);
     }, []);
 
-
-
     // these if's need to be last they load the map
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading Maps";
 
     return (
         <section>
-
-            <div className="center" id="search">
-
-            </div>
-
             <div>
                 <div className="map-container">
-                    {/* <Search panTo={panTo} /> */}
-                    {/* < Locate panTo={panTo} /> */}
+                    <Search panTo={panTo} />
+                    < Locate panTo={panTo} />
                     <GoogleMap
                         mapContainerStyle={mapContainerStyle}
                         zoom={5}
@@ -139,7 +131,6 @@ const Home = () => {
                     <VendorList vendors={vendors} title="Vendor List" />
                 )}
             </div>
-
         </section>
     );
 }
