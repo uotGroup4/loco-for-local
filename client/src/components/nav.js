@@ -17,7 +17,7 @@ const Nav = () => {
             <div className="navlogo">
                 <span className="locologo">
                     <a href="/">
-                        <img src={locologo} height="200" width="200" alt="text here" className="locologo" /></a>
+                        <img src={locologo} height="150" width="200" alt="text here" className="locologo" /></a>
                 </span>
             </div>
             <div className="row-container">
