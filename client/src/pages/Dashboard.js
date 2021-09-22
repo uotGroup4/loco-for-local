@@ -75,10 +75,10 @@ const Dashboard = (vendor) => {
                 </h2>
             </div>
 
-            <div className="about-cards">
+            <div className="dashboard-cards">
                 {userData.savedVendors.map((vendor) => {
                     return (
-                        <div className="card" key={vendor.vendorId}>
+                        <div className="dashboard-card" key={vendor.vendorId}>
                             {vendor.image ? <img src={vendor.image} alt={`${vendor.title}`} /> : null}
                             <div className="svBody">
                                 <div className="card-title">

@@ -41,8 +41,6 @@ const libraries = ['places'];
 const mapContainerStyle = {
     width: "60vw",
     height: "80vh",
-
-
 };
 
 // lat/lng for toronto
@@ -105,7 +103,7 @@ const Home = () => {
                     {/* < Locate panTo={panTo} /> */}
                     <GoogleMap
                         mapContainerStyle={mapContainerStyle}
-                        zoom={10}
+                        zoom={5}
                         center={center}
                         options={options}
                         onLoad={onMapLoad}
