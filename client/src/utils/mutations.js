@@ -34,7 +34,7 @@ export const SAVE_VENDOR = gql`
       username
       email
       savedVendors {
-        vendorId
+        _id
         title
         image
         website
@@ -46,20 +46,20 @@ export const SAVE_VENDOR = gql`
 `;
 
 // mut to remove vendor
-export const REMOVE_VENDOR = gql`
-  mutation removeVendor($bookId: String!) {
-    removeVendor(vendorId: $vendorId) {
-      _id
-      username
-      email
-      savedVendors {
-        vendorId
-        title
-        image
-        website
-        location
-        coordinates
-      }
-    }
-  }
-`;
+// export const REMOVE_VENDOR = gql`
+//   mutation removeVendor($bookId: String!) {
+//     removeVendor(vendorId: $vendorId) {
+//       _id
+//       username
+//       email
+//       savedVendors {
+//         vendorId
+//         title
+//         image
+//         website
+//         location
+//         coordinates
+//       }
+//     }
+//   }
+// `;

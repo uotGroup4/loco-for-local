@@ -5,11 +5,6 @@ const vendorSchema = new Schema({
         type: String,
         required: true,
     },
-    // does this vendorId need to come from Google?
-    // vendorId: {
-    //     type: String,
-    //     required: true,
-    // },
     image: {
         type: String,
     },
@@ -27,4 +22,4 @@ const vendorSchema = new Schema({
 
 const Vendor = model('Vendor', vendorSchema);
 
-module.exports = Vendor;
+module.exports = { Vendor , vendorSchema };

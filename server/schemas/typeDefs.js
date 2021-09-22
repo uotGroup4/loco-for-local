@@ -32,11 +32,13 @@ const typeDefs = gql `
     }
 
     input vendorInput {
-        vendorId: String
+        _id: String
         title: String
         website: String
         image: String
         coordinates: [String]
+        location: String
+        _typename: String
     }
 
     input shopInput {

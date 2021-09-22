@@ -9,31 +9,43 @@ import { useMutation } from '@apollo/client';
 
 const Modal = ({ closeModal, vendor }) => {
     // ================= SAVE VENDOR START ================
+    console.log(vendor)
     // state to hold saved vendorId values
     const [savedVendorIds, setSavedVendorIds] = useState(getSavedVendorIds());
 
-    const [saveVendor, { error }] = useMutation(SAVE_VENDOR);
-
     // set up useEffect to saveVendorIds list to localStorage
     useEffect(() => {
-        return () => saveVendorIds(saveVendorIds);
-    })
+        // return () => saveVendorIds(saveVendorIds);
+        localStorage.setItem("save_vendors", JSON.stringify(savedVendorIds));
+    }, [savedVendorIds])
 
-    // function to handle saving vendor to db
-    const handleSaveVendor = async (vendorId) => {
+    const [saveVendor, { error }] = useMutation(SAVE_VENDOR);
+    // // function to handle saving vendor to db
+    
+    const handleSaveVendor = async (vendor) => {
         // find vendor and match id
-        const vendorToSave = vendor.vendorId === vendorId; // hmmm
+        // const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
+        // const vendorToSave = vendor.find(vendorUnit => vendorUnit.vendorId === vendorId); // 
         // get token
+        // const vendorToSave = true
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+        console.log(token)
         if (!token) {
             return false;
         }
-
         try {
+            //Update all properties
+            console.log("***********************************");
+            console.log(vendor)
             const { data } = await saveVendor({
-                variables: { input: vendorToSave }
+                // variables: { input: vendorToSave }
+                variables: { input: {
+                        _id: vendor._id,
+                        title: vendor.title,
+                    }
+                }
+
             });
 
             if (error) {
@@ -43,12 +55,13 @@ const Modal = ({ closeModal, vendor }) => {
             console.log(`handleSaveVendor ${data}`);
 
             // if vendor successfully saves to user, save vendor id to state
-            setSavedVendorIds([...saveVendorIds, vendorToSave.vendorId]);
+            setSavedVendorIds([...savedVendorIds, vendor._id]);
         } catch (err) {
             console.error(err);
         }
     }
     // ================= SAVE VENDOR END ================
+
     return (
         <div className='modalBackground'>
             <div className='modalContainer'>
@@ -68,12 +81,12 @@ const Modal = ({ closeModal, vendor }) => {
                         <button 
                             disabled={savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)}
                             className=""
-                            onClick={() => handleSaveVendor(vendor.vendorId)}>
+                            onClick={() => handleSaveVendor(vendor)}>
                             {savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)
                                 ? 'This vendor has already been saved'
                                 : 'Add to Favourites'
                             }
-                            </button>
+                        </button>
                     )}
                 </div>
             </div>
