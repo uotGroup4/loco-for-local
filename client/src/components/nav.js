@@ -13,12 +13,12 @@ const Nav = () => {
         Auth.logout();
     };
     return (
-        <div class="top-container">
-            <span class="locologo">
+        <div className="top-container">
+            <span className="locologo">
                 <a href="/">
-                    <img src={locologo} height="200" width="200" alt="text here" class="locologo" /></a>
+                    <img src={locologo} height="200" width="200" alt="text here" className="locologo" /></a>
             </span>
-            <div class="row-container">
+            <div className="row-container">
                 <ul className="flex-row">
 
                     <li className=" mx-2" >
