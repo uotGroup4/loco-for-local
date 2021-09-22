@@ -92,7 +92,7 @@ const Dashboard = (vendor) => {
                                     <p>{vendor.location}</p>
                                 </div>
                                 <button
-                                    className="row button"
+                                    className="removeButton"
                                     id={vendor._id}
                                     onClick={() => handleRemoveVendor(vendor)}
                                     >
