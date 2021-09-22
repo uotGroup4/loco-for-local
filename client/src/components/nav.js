@@ -13,12 +13,14 @@ const Nav = () => {
         Auth.logout();
     };
     return (
-        <div className="top-container">
-            <span className="locologo">
-                <a href="/">
-                    <img src={locologo} height="200" width="200" alt="text here" className="locologo" /></a>
-            </span>
-            <div className="row-container">
+        <section class="top-container">
+            <div class="navlogo">
+                <span class="locologo">
+                    <a href="/">
+                        <img src={locologo} height="200" width="200" alt="text here" class="locologo" /></a>
+                </span>
+            </div>
+            <div class="row-container">
                 <ul className="flex-row">
 
                     <li className=" mx-2" >
@@ -29,13 +31,13 @@ const Nav = () => {
 
                     </li>
                     <li className=" mx-2">
-                        <Link to='/signup'>
-                            Register
+                        <Link to='/about'>
+                            About
                     </Link>
                     </li>
                     <li className=" mx-2">
-                        <Link to='/about'>
-                            About
+                        <Link to='/signup'>
+                            Register
                     </Link>
                     </li>
                     {Auth.loggedIn() ? (
@@ -58,7 +60,7 @@ const Nav = () => {
                     )}
                 </ul>
             </div>
-        </div>
+        </section >
 
 
 
