@@ -1,18 +1,13 @@
 import React from 'react';
-// import { Redirect, useParams } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
-
-// import VendorList from '../components/VendorList';
-
 import Auth from '../utils/auth';
-import { removeVendorId } from '../utils/localStorage';
+
 import { useQuery, useMutation } from '@apollo/client';
-// import { useQuery } from '@apollo/client';
-// import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { REMOVE_VENDOR } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
 
-const Dashboard = (props) => {
+const Dashboard = (vendor) => {
+
+    console.log(`dashboard ${vendor}`);
     // const { username: userParam } = useParams();
     const { loading, data } = useQuery(GET_ME);
     const [removeVendor, { error }] = useMutation(REMOVE_VENDOR);
@@ -42,26 +37,31 @@ const Dashboard = (props) => {
     }
 
     // funciton to accept vendors _id value as param and delete vendor from user db
-    const handleDeleteVendor = async (vendorId) => {
+    const handleRemoveVendor = async (vendor) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
             return false;
         }
 
+        console.log(`removing vendor ${vendor}`);
         try {
             const { data } = await removeVendor({
-                variables: { vendorId }
+                variables: {
+                    input: {
+                        _id: vendor._id,
+                        title: vendor.title,
+                        website: vendor.website,
+                        image: vendor.image,
+                        location: vendor.location
+                    }
+                }
             });
 
-            console.log("vendor data:", data);
-
+            // console.log("vendor data:", data);
             if (error) {
                 throw new Error('Something went wrong');
             }
-
-            //upon success, remove vendor's id from localstorage
-            removeVendorId(vendorId);
         } catch (err) {
             console.error(err);
         }
@@ -85,15 +85,17 @@ const Dashboard = (props) => {
                                     <h4>{vendor.title}</h4>
                                 </div>
                                 <div className="card-body">
-                                    <p> 
+                                    <p>
                                         <a href={vendor.website}>{vendor.website}</a>
                                     </p>
                                     <br />
                                     <p>{vendor.location}</p>
                                 </div>
-                                <button 
-                                    className="removeButton" 
-                                    onClick={() => handleDeleteVendor(vendor.vendorId)}>
+                                <button
+                                    className="row button"
+                                    id={vendor._id}
+                                    onClick={() => handleRemoveVendor(vendor)}
+                                    >
                                     Remove Vendor
                                 </button>
                             </div>

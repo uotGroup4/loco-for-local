@@ -95,11 +95,11 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        removeVendor: async (parent, { vendorId }, context) => {
+        removeVendor: async (parent, { input }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { savedVendor: { vendorId: vendorId } } },
+                    { $pull: { savedVendors: input } },
                     { new: true, runValidators: true }
                 );
 
