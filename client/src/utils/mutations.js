@@ -47,13 +47,13 @@ export const SAVE_VENDOR = gql`
 
 // mut to remove vendor
 export const REMOVE_VENDOR = gql`
-  mutation removeVendor($bookId: String!) {
-    removeVendor(vendorId: $vendorId) {
+  mutation removeVendor($input: vendorInput!) {
+    removeVendor(input: $input) {
       _id
       username
       email
       savedVendors {
-        vendorId
+        _id
         title
         image
         website

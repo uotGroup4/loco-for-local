@@ -35,7 +35,7 @@ const About = () => {
                 {/* SARAH'S CARD */}
                 <div className="card">
                     <div className="card-img">
-                        <img src={sarah} height="200" width="200" alt="Profile image of Sarah" className="profile-img" />
+                        <img src={sarah} height="200" width="200" alt="Profile of Sarah" className="profile-img" />
                     </div>
                     <div className="card-title">
                         <h4>Sarah Azzopardi</h4>
@@ -51,7 +51,7 @@ const About = () => {
                 {/* SAID'S CARD */}
                 <div className="card">
                     <div className="card-img">
-                        <img src={said} height="200" width="200" alt="Profile image of Said" className="profile-img" />
+                        <img src={said} height="200" width="200" alt="Profile of Said" className="profile-img" />
                     </div>
                     <div className="card-title">
                         <h4>Said Hadad</h4>
@@ -67,7 +67,7 @@ const About = () => {
                 {/* SHANNON'S CARD */}
                 <div className="card">
                     <div className="card-img">
-                        <img src={shannon} height="200" width="200" alt="Profile image of Shannon" className="profile-img" />
+                        <img src={shannon} height="200" width="200" alt="Profile of Shannon" className="profile-img" />
                     </div>
                     <div className="card-title">
                         <h4>Shannon Nell</h4>
