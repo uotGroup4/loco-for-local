@@ -10,7 +10,6 @@ import { useMutation } from '@apollo/client';
 
 const Modal = ({ closeModal, vendor }) => {    
     
-    // const [disable, setDisable] = useState(false);
     // handle save to favourites button click
     const handleSaveClick = async (event) => {
         handleSaveVendor(vendor);
@@ -19,18 +18,8 @@ const Modal = ({ closeModal, vendor }) => {
 
     // ================= SAVE VENDOR START ================
     console.log(vendor)
-    // state to hold saved vendorId values
-    // const [savedVendorIds, setSavedVendorIds] = useState(getSavedVendorIds());
-    // console.log(`savedVendorIds ${savedVendorIds}`);
 
     const [saveVendor, { error }] = useMutation(SAVE_VENDOR);
-
-    // set up useEffect to saveVendorIds list to localStorage
-    // useEffect(() => {
-    //     // return () => saveVendorIds(saveVendorIds);
-    //     localStorage.setItem("save_vendors", JSON.stringify(savedVendorIds));
-    // }, [savedVendorIds])
-
 
     // function to handle saving vendor to db
     const handleSaveVendor = async (vendor) => {
@@ -43,8 +32,8 @@ const Modal = ({ closeModal, vendor }) => {
         try {
             //Update all properties
             const { data } = await saveVendor({
-                // variables: { input: vendorToSave }
-                variables: { input: {
+                variables: { 
+                    input: {
                         _id: vendor._id,
                         title: vendor.title,
                         website: vendor.website,
@@ -57,10 +46,6 @@ const Modal = ({ closeModal, vendor }) => {
             if (error) {
                 throw new Error('something went wrong');
             }
-
-            // // if vendor successfully saves to user, save vendor id to state
-            // setSavedVendorIds([...savedVendorIds, data._id]);
-            // console.log(`setSaved data._id ${data._id}`);
         } catch (err) {
             console.error(err);
         }
@@ -85,7 +70,6 @@ const Modal = ({ closeModal, vendor }) => {
                     {Auth.loggedIn() && (
                         <button 
                             // disabled={savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)}
-                            // disabled={false}
                             className="save-favs-btn"
                             // disabled={disable}
                             onClick={() => handleSaveClick()}>
