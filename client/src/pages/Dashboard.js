@@ -1,14 +1,7 @@
 import React from 'react';
-// import { Redirect, useParams } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
-
-// import VendorList from '../components/VendorList';
-
 import Auth from '../utils/auth';
 import { removeVendorId } from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/client';
-// import { useQuery } from '@apollo/client';
-// import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { REMOVE_VENDOR } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
 
