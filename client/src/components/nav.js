@@ -22,41 +22,52 @@ const Nav = () => {
             </div>
             <div className="row-container">
                 <ul className="flex-row">
-
-                    <li className=" mx-2" >
-
-                        <Link to='/'>
-                            Home
-                    </Link>
-
-                    </li>
-                    <li className=" mx-2">
-                        <Link to='/about'>
-                            About
-                    </Link>
-                    </li>
-                    <li className=" mx-2">
-                        <Link to='/signup'>
-                            Register
-                    </Link>
-                    </li>
                     {Auth.loggedIn() ? (
                         <>
+                            <li className=" mx-2" >
+                                <Link to='/'>
+                                    Home
+                                </Link>
+                            </li>
                             <li className=" mx-2">
-                                <Link to="/dashboard">Dashboard</Link>
+                                <Link to='/about'>
+                                    About
+                                </Link>
+                            </li>
+                            <li className=" mx-2">
+                                <Link to="/dashboard">
+                                    Dashboard
+                                </Link>
                             </li>
                             <li className="mx-2">
                                 <a href="/" onClick={logout}>
                                     Logout
-                            </a>
+                                </a>
                             </li>
                         </>
                     ) : (
-                        <li className="mx-2">
-                            <Link to='/login'>
-                                Login
-                        </Link>
-                        </li>
+                        <>
+                            <li className=" mx-2" >
+                                <Link to='/'>
+                                    Home
+                                </Link>
+                            </li>
+                            <li className=" mx-2">
+                                <Link to='/about'>
+                                    About
+                                </Link>
+                            </li>
+                            <li className=" mx-2">
+                                <Link to='/signup'>
+                                    Register
+                                </Link>
+                            </li>
+                            <li className="mx-2">
+                                <Link to='/login'>
+                                    Login
+                                </Link>
+                            </li>
+                        </>
                     )}
                 </ul>
             </div>

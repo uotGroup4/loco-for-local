@@ -44,7 +44,7 @@ const About = () => {
                     <div className="card-body">
                         <p>Sarah is primarily our front end designer.</p>
                         <p>Fun fact: Sarah is from a tiny island in Italy. She also does not like public speaking.</p>
-                        <a href="https://github.com/sylviamarja">Sarah's GitHub</a>
+                        <a href="https://github.com/sylviamarja" target="_blank">Sarah's GitHub</a>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@ const About = () => {
                     <div className="card-body">
                         <p>Said worked primarily on back end server side and the Google map API.</p>
                         <p>Fun fact: Said is a self declared professional IKEA furniture assembler.</p>
-                        <a href="https://github.com/saidHadad">Said's GitHub</a>
+                        <a href="https://github.com/saidHadad" target="_blank">Said's GitHub</a>
                     </div>
                 </div>
 
@@ -76,7 +76,7 @@ const About = () => {
                     <div className="card-body">
                         <p>Shannon teamed up with Said on the back end server side and focused on mutations and queries.</p>
                         <p>Fun fact: Shannon loves to surf and is sad she doesn't live close to a warm surfable ocean.</p>
-                        <a href="https://github.com/ShannonNell">Shannon's GitHub</a>
+                        <a href="https://github.com/ShannonNell" target="_blank">Shannon's GitHub</a>
                     </div>
                 </div>
             </div>
