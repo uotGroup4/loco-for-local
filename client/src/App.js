@@ -60,7 +60,7 @@ function App() {
           <div className="mobile-header">
             <Nav currentTab={currentTab} setCurrentTab={setCurrentTab}></Nav>
           </div>
-          <main className="container">
+          <div className="container">
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/login' component={Login} />
@@ -69,8 +69,11 @@ function App() {
               <Route exact path='/dashboard/:username?' component={Dashboard} />
               <Route component={NoMatch} />
             </Switch>
+          </div>
+          <footer>
           <Footer />
-          </main>
+
+          </footer>
 
         </>
       </Router>
