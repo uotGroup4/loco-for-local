@@ -43,6 +43,9 @@ const Modal = ({ closeModal, vendor }) => {
                 variables: { input: {
                         _id: vendor._id,
                         title: vendor.title,
+                        website: vendor.website,
+                        image: vendor.image,
+                        location: vendor.location
                     }
                 }
 
