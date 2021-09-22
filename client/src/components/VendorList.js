@@ -21,7 +21,7 @@ const VendorList = ({ vendors, title }) => {
                                         <br />
                                         <p>{vendor.location}</p>
                                         <br />
-                                        <p><Link to={vendor.website}>{vendor.website}</Link></p>
+                                        <p><a href={vendor.website} target="_blank">{vendor.website}</a></p>
                                         <br />
                                         <p>{vendor.description}</p>
                                     </div>
