@@ -20,24 +20,16 @@ const Modal = ({ closeModal, vendor }) => {
     }, [savedVendorIds])
 
     const [saveVendor, { error }] = useMutation(SAVE_VENDOR);
-    // // function to handle saving vendor to db
+    // function to handle saving vendor to db
     
     const handleSaveVendor = async (vendor) => {
-        // find vendor and match id
-        // const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
-        // const vendorToSave = vendor.find(vendorUnit => vendorUnit.vendorId === vendorId); // 
-        // get token
-        // const vendorToSave = true
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-        console.log(token)
         if (!token) {
             return false;
         }
         try {
             //Update all properties
-            console.log("***********************************");
-            console.log(vendor)
             const { data } = await saveVendor({
                 // variables: { input: vendorToSave }
                 variables: { input: {
@@ -48,15 +40,11 @@ const Modal = ({ closeModal, vendor }) => {
                         location: vendor.location
                     }
                 }
-
             });
 
             if (error) {
                 throw new Error('something went wrong');
             }
-
-            console.log(`handleSaveVendor ${data}`);
-
             // if vendor successfully saves to user, save vendor id to state
             setSavedVendorIds([...savedVendorIds, vendor._id]);
         } catch (err) {
