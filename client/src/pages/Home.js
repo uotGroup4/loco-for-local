@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Modal from '../components/Modal/Modal'
 import VendorList from '../components/VendorList';
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
 
 // import Auth from '../utils/auth';
 
