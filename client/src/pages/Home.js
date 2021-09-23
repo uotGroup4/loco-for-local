@@ -92,18 +92,18 @@ const Home = () => {
     return (
         <section className="home-container">
             <div className='map-container'>
-                    <GoogleMap
-                        mapContainerStyle={mapContainerStyle}
-                        zoom={5}
-                        center={center}
-                        options={options}
-                        onLoad={onMapLoad}
-                    // resetBoundsOnResize={true} //to resize the map without changing integrity
+                <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={5}
+                    center={center}
+                    options={options}
+                    onLoad={onMapLoad}
+                // resetBoundsOnResize={true} //to resize the map without changing integrity
 
-                    >
-                        {/* embbed markers inside maps component */}
-                        {vendors.map((vendor) => (
-                            <Marker
+                >
+                    {/* embbed markers inside maps component */}
+                    {vendors.map((vendor) => (
+                        <Marker
                             key={vendor._id}
                             position={{ lat: parseFloat(vendor.coordinates[1]), lng: parseFloat(vendor.coordinates[0]) }}
                             icon={{
@@ -114,16 +114,17 @@ const Home = () => {
                                 setSelected(vendor);
                                 setOpenModal(true);
                             }}
-                            />
-                            ))}
-                            < Locate panTo={panTo} />
-                    </GoogleMap>
-                {openModal && <Modal vendor={selected} closeModal={setOpenModal} />}
+                        />
+                    ))}
+                    < Locate panTo={panTo} />
+                </GoogleMap>
+
             </div>
+            {openModal && <Modal vendor={selected} closeModal={setOpenModal} />}
 
             {/* Testing out vendor list */}
             <div className="vendor-cards">
-                <Search panTo={panTo} />    
+                <Search panTo={panTo} />
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
