@@ -8,28 +8,32 @@ import muscLogo from "../assets/profiles/muscodeersLogo.png";
 const About = () => {
     return (
         <div>
-            <div className="about-intro">
-                <h1>About us</h1>
-                <p>
-                    Hello and welcome. Thank you for visiting and using our app! We hope this app will help you find amazing local vendors as you travel across the world.
+            <container className="aboutus">
+                <div className="about-intro">
+                    <h1 className="abouth">About Us</h1>
+                    <p>
+                        Hello and welcome. Thank you for visiting and using our app! We hope this app will help you find amazing local vendors as you travel across the world.
                 </p>
-                <p>If you have a vendor you know of that deserves to be on this app, please
+                    <p>If you have a vendor you know of that deserves to be on this app, please
                     <a href="mailto:uoftgroup4@gmail.com">
-                        email us!
+                            email us!
                     </a>
-                </p>
-            </div>
+                    </p>
+                </div>
+            </container>
+            <container className="whoweare">
+                <div className="about-musc">
+                    <h3 className="abouth">Who We Are</h3>
 
-            <div className="about-musc">
-                <h3>Who We Are</h3>
-                <h4>
-                    <img src={muscLogo} height="100" alt="The Three Muscodeers Logo - All for Code, Code for All" className="musc-logo"/>
-                    The Three Muscodeers
-                </h4>
-                <p>We are a trio of full stack web developers with a love of travel.
+                    <h4>
+                        <img src={muscLogo} height="100" alt="The Three Muscodeers Logo - All for Code, Code for All" className="musc-logo" />
+                    </h4>
+                    <h5>Three Muscodeers</h5>
+                    <p className="aboutp">We are a trio of full stack web developers with a love of travel.
                     This application derived out of a want for a simple way to find local shops, farmers markets, restaurants, etc and be able to support local businesses on our travels.
                     Currently we are Canada wide, farmers markets only; but with user input on the best local places to visit we hop to expand to all local vendors, nation wide!</p>
-            </div>
+                </div>
+            </container>
 
             <div className="about-cards">
                 {/* SARAH'S CARD */}
@@ -43,7 +47,7 @@ const About = () => {
                     </div>
                     <div className="card-body">
                         <p>Sarah is primarily our front end designer.</p>
-                        <p>Fun fact: Sarah is from a tiny island in Italy. She also does not like public speaking.</p>
+                        <p>Fun fact: Sarah is an avid gardener and lover of all things nature. House Slytherin</p>
                         <a href="https://github.com/sylviamarja" target="_blank">Sarah's GitHub</a>
                     </div>
                 </div>

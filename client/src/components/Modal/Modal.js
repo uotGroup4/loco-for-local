@@ -8,8 +8,8 @@ import Auth from '../../utils/auth';
 import { SAVE_VENDOR } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
-const Modal = ({ closeModal, vendor }) => {    
-    
+const Modal = ({ closeModal, vendor }) => {
+
     // handle save to favourites button click
     const handleSaveClick = async (event) => {
         handleSaveVendor(vendor);
@@ -32,7 +32,7 @@ const Modal = ({ closeModal, vendor }) => {
         try {
             //Update all properties
             const { data } = await saveVendor({
-                variables: { 
+                variables: {
                     input: {
                         _id: vendor._id,
                         title: vendor.title,
@@ -42,7 +42,7 @@ const Modal = ({ closeModal, vendor }) => {
                     }
                 }
             });
-            
+
             if (error) {
                 throw new Error('something went wrong');
             }
@@ -63,17 +63,17 @@ const Modal = ({ closeModal, vendor }) => {
                 <div className='body'>
                     <p>{vendor.location}</p>
                     <br />
-                    <p><Link to={vendor.website}>{vendor.website}</Link></p>
+                    <p><a href={vendor.website} target="_blank">{vendor.website}</a></p>
                 </div>
                 <div className='footer'>
                     <button onClick={() => closeModal(false)} id="cancelBtn">Cancel</button>
                     {Auth.loggedIn() && (
-                        <button 
+                        <button
                             // disabled={savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)}
                             className="save-favs-btn"
                             // disabled={disable}
                             onClick={() => handleSaveClick()}>
-                            
+
                             {/* {savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)
                                 ? 'This vendor has already been saved'
                                 : 'Add to Favourites'
