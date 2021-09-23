@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '../components/Modal/Modal'
 import VendorList from '../components/VendorList';
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
 
 // import Auth from '../utils/auth';
 
@@ -37,6 +34,8 @@ import "@reach/combobox/styles.css"
 
 // styling for the map
 import mapStyles from '../mapStyles';
+
+require("dotenv").config();
 
 // set up options to pass to the googlemaps component (to avoid rerendering)
 const libraries = ['places'];
