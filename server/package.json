@@ -1,0 +1,28 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "apollo-server-express": "^2.25.2",
+    "bcrypt": "^4.0.1",
+    "express": "^4.17.1",
+    "faker": "^5.5.3",
+    "graphql": "^15.5.3",
+    "graphql-tag": "^2.12.5",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.9",
+    "mongosh": "^1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon",
+    "seed": "node seeders/seeds.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,13 +1,500 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ /* styles for components starts here */
+.container {
+	margin:auto;
+	max-width: 90%;
+	height: auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+	box-sizing: border-box; 
 }
+html,
+body {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-weight: 600;
+	line-height: 1.5;
+	font-size: 18px;
+	letter-spacing: .1em;
+	background: white;
+	color: #01474ef3;
+	font-family:'Roboto', sans-serif;
+}
+/*-------------------------- NAV styles  ---------------------------------------------*/
+ a{
+  text-decoration: none;
+	color: #01474ef3;
+	font-weight: bold;
+	border-radius: 5px;
+	font-weight: 600;
+	padding: 2px 4px;
+	margin-left: -2px;
+	margin-right: -2px;
+	overflow-wrap: break-word;
+ }
+ 
+ a:hover {
+	text-decoration:overline;} 
+
+ul li {
+	list-style: none;
+}
+
+nav li {
+	cursor: pointer;
+}
+.mx-2 {
+	margin-right: 5%;
+	font-size: 20px;
+	
+}
+
+
+.row-container {
+	align-self: flex-end;
+	width: 100%;
+	
+	}
+.top-container {
+		background-color: #f1f1f1;
+		padding-right: 2.5%;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		align-items: center;
+	  }
+.flex-row {
+		display: flex;
+		justify-content: space-evenly;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+
+/* end nav section */
+
+ /* -----------------------h1  styles --------------------------------- */
+h1,
+h2,
+h3{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	margin: 5px 0;
+	line-height: 1.25;
+}
+
+h1 {
+	font-size: 2.25rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.75rem;
+}
+
+p {
+	font-size: 1.1rem;
+	margin-top: 0;
+}
+
+/* ------------------------ map styles start  here ------------------------------------*/
+
+
+
+
+
+/*map section styling ends */
+
+
+/* ------------------------------logo ------------------------------------------------------*/
+.locologo, .navlogo{
+	float: left;
+	position:relative;
+	
+}
+
+/* logo ends  */
+
+
+/* ------------------------------  footer section starts ----------------------------------- */
+
+.footer {
+	margin:70px 0 0 0;
+	background-color: whitesmoke;
+	color: #01474ef3;
+  }
+  
+  .footer ul {
+	padding:0;
+	list-style:none;
+	text-align:center;
+	font-size:18px;
+	line-height:1.6;
+	margin-bottom:0;
+  }
+  
+  .footer li {
+	padding:0 10px;
+  }
+  
+  .footer ul a {
+	color:inherit;
+	text-decoration:none;
+	opacity:0.8;
+  }
+  
+  .footer ul a:hover {
+	opacity:1;
+  }
+  
+  .social {
+	text-align:center;
+	padding-top: 1em;
+  }
+  
+  .footer .social > a {
+	font-size:24px;
+	width:40px;
+	height:40px;
+	line-height:40px;
+	display:inline-block;
+	text-align:center;
+	border-radius:50%;
+	border:1px solid #ccc;
+	margin:0 8px;
+	color:inherit;
+	opacity:0.75;
+  }
+  
+  .footer .social > a:hover {
+	opacity:0.9;
+  }
+  
+  .footer .copyright {
+	margin-top:10px;
+	padding-bottom: 5px;
+	text-align:center;
+	font-size:13px;
+	color:#01474ef3;
+	margin-bottom:0;
+  }
+
+  /* end footer section */
+
+
+
+
+
+/* ----------------------------Viewports Styling start ---------------------------------------*/
+ /* @media screen and (max-width: 980px) {}
+
+@media screen and (max-width: 817px) {
+	header div {
+		position: relative;
+		width: 110%;
+	}
+	nav ul li span {
+		font-size: 0.75em;
+	}
+
+	header div h2 {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+		.mobile-header {
+		width: 110%;
+	}
+
+	.mobile-row {
+		display: block;
+		margin: 0 100px 0 auto;
+	}
+
+	.mobile-view {
+		display: inline;
+		text-align: end;
+	}
+
+	
+	ol {
+		font-size: 0.75rem;
+	}
+}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 575px) {}
+
+/*  Viewports Styling end * */
+
+/* -----------------------LOGIN ----------------------------- */
+
+.mainlogin{
+	background: rgb(34,193,195);
+	background: linear-gradient(200deg, rgb(2, 105, 107) 0%,     rgb(250, 96, 24) 100%);
+	font-family: "work sans";
+	margin-top: 10%;
+	border-radius: 25px;
+	padding: 1px
+		
+		
+	  } 
+  .loginform{
+	max-width: 500px;
+	min-width: 300px;
+	max-height: 700px;
+	width: 30%;
+	height: 60%;
+	margin: 100px auto;
+	background-color: #FFFFFF;
+	border-radius: 25px;
+  }
+  
+  .headerTitle{
+	text-align: center;
+	font-family: 'open sans', sans-serif;
+	padding: 2rem 0;
+	margin: 0;
+	font-size: 2rem;
+  }
+  
+  .row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 2rem;
+	max-width: 100%;
+	
+  }
+  
+  .row input{
+	width: 80%;
+	box-sizing: border-box;
+	border: none;
+	font-size: 1.3rem;
+	padding-left: 1.5rem;
+	padding-bottom: 1rem;
+	box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+	transition: box-shadow 0.2s ease-in;
+	
+  }
+  
+  .row input:focus{
+	 box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
+	 outline: none;
+  }
+  
+  .row input::-webkit-input-placeholder{
+	opacity: 1;
+	transition: opacity 0.25s ease-out;
+  }
+  
+  .row input:hover::-webkit-input-placeholder,
+  .row input:focus::-webkit-input-placeholder{
+	opacity: 0;
+  }
+  
+  .row label{
+	align-self: start;
+	padding-left: 4.5rem;
+	padding-bottom: 0.5rem;
+	color: rgba(187,187,187,0.9);
+  }
+  
+  .row button{
+	border-radius: 25px;
+	width: 80%;
+	height: 40px;
+	font-size: 25px;
+	color: white;
+	font-weight: 700;
+	background: #01474ef3;
+	border: 0px;
+	cursor: pointer;
+	transition: opacity 0.25s ease-out;
+  }
+  
+  .row button:hover{
+	opacity: 0.8;
+  }
+  
+  .button{
+	padding-bottom: 1.5rem;
+  }
+  
+	/* ----------------------- About ----------------------------- */
+
+	.about-cards {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.card, .dashboard-card {
+		width: 400px;
+		height: 520px;
+		text-align: center;
+		box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+		border-radius: 12%;
+		padding: 1%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin-top: 3%;
+	}
+
+	.card h4 {
+		font-size: 2em;
+		margin: 0%;
+	}
+
+	.card h5 {
+		margin: -10px 2px 12px 2px;
+	}
+
+	.card-body p {
+		font-size: .9em;
+	}
+
+	/* ----------------------- Dashboard ----------------------------- */
+
+	.removeButton {
+		border-radius: 25px;
+		width: 80%;
+		height: 40px;
+		font-size: 25px;
+		color: white;
+		font-weight: 700;
+		background: #01474ef3;
+		border: 0px;
+		cursor: pointer;
+		transition: opacity 0.25s ease-out;
+	}
+
+	.removeButton:hover{
+		opacity: 0.8;
+	}
+
+	.dashboard-cards{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.dashboard-card {
+		width: 400px;
+		height: auto;
+	}
+
+	.dashboard-card h4 {
+		font-size: 2em;
+		margin: 0%;
+	}
+
+	.dashboard-card h5 {
+		margin: -10px 2px 12px 2px;
+	}
+
+	.dashboard-card p {
+		font-size: .9em;
+	}
+
+	/* homepage  */
+
+	.search {
+		width: 100%;
+	}
+	
+	.search input {
+		padding: 0.5rem;
+		font-size: 1.5rem;
+		width: 100%;
+	}
+	
+	.locate {
+		top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    position: absolute;
+	}
+	
+	.locate img {
+		width: 50px;
+		cursor: pointer;
+	}
+
+	.locate img:hover {
+		opacity: .5;
+	}
+
+	.map-container {
+		border: black;
+		border-style: solid;
+		width: 100%;
+	}
+
+	.vendor-cards {
+		display: none;
+	}
+
+	.home-container {
+		justify-content: space-between;
+	}
+
+
+	@media (min-width: 550px) {
+		.top-container,
+		.flex-row {
+			flex-direction: row;
+		}
+
+		.row-container {
+			width: 800px;
+		}
+
+		.container {
+			max-width: 90%;
+			padding: 50px 30px;
+		}
+	
+		.map-container {
+			width: auto;
+		}
+	}
+
+	@media (min-width: 1000px) {
+		.home-container {
+			display: flex;
+			
+		}
+		.map-container {
+			width: 1000px;
+			margin: auto;
+		}
+	}
+
+	@media (min-width: 1700px) {
+		.vendor-cards {
+			width: fit-content;
+			height: 600px;
+			overflow: auto;
+			display: inline-block;
+		}
+	}
+
+	@media screen and (max-width: 1400px) {
+		.card {
+			min-width: 360px;
+			min-height: 550px
+		}
+	}
