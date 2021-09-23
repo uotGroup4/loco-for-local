@@ -392,7 +392,7 @@ p {
 
 	.dashboard-card {
 		border: #01474ef3;
-    	border-style: solid;
+    border-style: solid;
 		width: 400px;
 		height: auto;
 		text-align: center;
@@ -425,3 +425,52 @@ p {
 	}
 
 
+	/* homepage  */
+
+	.search {
+		top: 1rem;
+		left: 50%;
+		width: 100%;
+		max-width: 400px;
+		z-index: 10;
+	}
+	
+	.search input {
+		padding: 0.5rem;
+		font-size: 1.5rem;
+		width: 100%;
+	}
+	
+	.locate {
+		top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    position: absolute;
+	}
+	
+	.locate img {
+		width: 50px;
+		cursor: pointer;
+	}
+
+	.locate img:hover {
+		opacity: .5;
+	}
+
+	.map-container {
+		border: black;
+		border-style: solid;
+		width: 1008px;
+	}
+
+	.vendor-cards {
+    width: fit-content;
+    height: 800px;
+    overflow: auto;
+	}
+
+	.home-container {
+		display: flex;
+		justify-content: space-between;
+	}

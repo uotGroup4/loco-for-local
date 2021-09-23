@@ -38,8 +38,8 @@ import mapStyles from '../mapStyles';
 // set up options to pass to the googlemaps component (to avoid rerendering)
 const libraries = ['places'];
 const mapContainerStyle = {
-    width: "60vw",
-    height: "80vh",
+    width: "1000px",
+    height: "800px",
 };
 
 // lat/lng for toronto
@@ -88,11 +88,8 @@ const Home = () => {
     if (!isLoaded) return "Loading Maps";
 
     return (
-        <section>
-            <div>
-                <div className="map-container">
-                    <Search panTo={panTo} />
-                    < Locate panTo={panTo} />
+        <section className="home-container">
+            <div className='map-container'>
                     <GoogleMap
                         mapContainerStyle={mapContainerStyle}
                         zoom={5}
@@ -105,26 +102,26 @@ const Home = () => {
                         {/* embbed markers inside maps component */}
                         {vendors.map((vendor) => (
                             <Marker
-                                key={vendor._id}
-                                position={{ lat: parseFloat(vendor.coordinates[1]), lng: parseFloat(vendor.coordinates[0]) }}
-                                icon={{
-                                    url: 'lfl_favicon.png',
-                                    scaledSize: { height: 30, width: 30 }
-                                }}
-                                onClick={() => {
-                                    setSelected(vendor);
-                                    setOpenModal(true);
-                                }}
+                            key={vendor._id}
+                            position={{ lat: parseFloat(vendor.coordinates[1]), lng: parseFloat(vendor.coordinates[0]) }}
+                            icon={{
+                                url: 'lfl_favicon.png',
+                                scaledSize: { height: 30, width: 30 }
+                            }}
+                            onClick={() => {
+                                setSelected(vendor);
+                                setOpenModal(true);
+                            }}
                             />
-                        ))}
+                            ))}
+                            < Locate panTo={panTo} />
                     </GoogleMap>
-                </div>
-
                 {openModal && <Modal vendor={selected} closeModal={setOpenModal} />}
             </div>
 
             {/* Testing out vendor list */}
-            <div>
+            <div className="vendor-cards">
+                <Search panTo={panTo} />    
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
