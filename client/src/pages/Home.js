@@ -38,8 +38,8 @@ import mapStyles from '../mapStyles';
 // set up options to pass to the googlemaps component (to avoid rerendering)
 const libraries = ['places'];
 const mapContainerStyle = {
-    width: "1000px",
-    height: "800px",
+    width: "auto",
+    height: "600px",
 };
 
 // lat/lng for toronto

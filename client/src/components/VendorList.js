@@ -8,7 +8,7 @@ import "./Card/card.css"
 const VendorList = ({ vendors, title }) => {
     return (
         <div>
-            <h5>Vendor Information</h5>
+            <h5 className="vendors-header">Vendor Information</h5>
             {vendors &&
                 vendors.map(vendor => (
                     <div key={vendor._id} className="">
