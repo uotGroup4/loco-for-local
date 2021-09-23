@@ -10,34 +10,31 @@ ___
 * [Installation](#installation)
 * [Usage](#usage)
 * [Links](#links)
-* [Tests](#tests)
 * [Credits](#credits)
 * [License](#license)
 * [User Story](#user-story)
+* [Future Development](#future-development)
+* [Questions](#questions)
 ___
 
 ## Installation
-{{{Clone the repository from GitHub to your local machine. In the command line type `npm install` to install the dependencies and `npm run develop` from the root of the project to run the server.}}}
+Clone the repository from GitHub to your local machine. In the command line type `npm install` to install the dependencies and `npm run develop` from the root of the project to run the server. You will also need to run `npm install` in both the server and client folders to ensure all dependencies are installed.
 ___
 
 ## Usage
 This application will allow users to search for local vendors while travelling across Canada. As a logged in user, they will be able to save vendors to their favourites as well as rate the vendors. Businesses will also have the option of signing up to have their local business be incorporated in our database.
-![screenshot](./assets/)
+![screenshot](./client/src/assets/lfl_ss.png)
 ___
 
 ## Links
-* [Deployed Application]()
-___
-
-## Tests
-
+* [Deployed Application](https://loco-for-local.herokuapp.com/)
+* [Presentation](https://www.canva.com/design/DAEqq49vFTA/mEBCSneNNd5gB-_nCGi9wg/view?utm_content=DAEqq49vFTA&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
 ___
 
 ## Credits
 * Completed by: [Nell-GitHub](https://github.com/ShannonNell)
-* Completed by: [Hadad-GitHub]()
-* Completed by: [Azz-GitHub]()
-* Completed by: [Mango-GitHub]()
+* Completed by: [Hadad-GitHub](https://github.com/saidHadad)
+* Completed by: [Azz-GitHub](https://github.com/sylviamarja)
 ___
 
 ## License
@@ -81,3 +78,15 @@ THEN I am taken to a new page where, as a local business, I can add my local bus
 [WHEN I click the donation link
 THEN I am taken to a page where I can choose a local charity to donate to]
 ```
+___
+
+## Future Development: 
+* Stripe capabilities for donations to a local vendor
+* Filter vendors by type (farmers markets, shops, restaurants, etc)
+* Ability to rate saved vendors
+* Worldwide  vendors
+* Ability to 'find vendor on map' straight from dashboard
+___
+
+## Questions: 
+If you have any questions or comments about the app, please reach out to us on GitHub or send us an [email](mailto:uoftgroup4@gmail.com).
