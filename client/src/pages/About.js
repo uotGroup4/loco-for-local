@@ -31,7 +31,7 @@ const About = () => {
                     <h5>Three Muscodeers</h5>
                     <p className="aboutp">We are a trio of full stack web developers with a love of travel.
                     This application derived out of a want for a simple way to find local shops, farmers markets, restaurants, etc and be able to support local businesses on our travels.
-                    Currently we are Canada wide, farmers markets only; but with user input on the best local places to visit we hop to expand to all local vendors, nation wide!</p>
+                    Currently we are Canada wide, farmers markets only; but with user input on the best local places to visit we hope to expand to all local vendors, nation wide!</p>
                 </div>
             </container>
 

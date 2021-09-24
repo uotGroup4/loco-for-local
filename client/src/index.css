@@ -366,7 +366,6 @@ p {
 	}
 	.aboutus{
 		width: auto;
-		height: 250px;
 		text-align: center;
 		box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
 		padding: 1%;
@@ -378,7 +377,6 @@ p {
 
 	.whoweare{
 		width: auto;
-		height: 450px;
 		text-align: center;
 		box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
 		padding: 1%;
