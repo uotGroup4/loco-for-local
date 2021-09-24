@@ -16,7 +16,7 @@ const About = () => {
                 </p>
                     <p>If you have a vendor you know of that deserves to be on this app, please
                     <a href="mailto:uoftgroup4@gmail.com">
-                            email us!
+                            EMAIL US!
                     </a>
                     </p>
                 </div>
