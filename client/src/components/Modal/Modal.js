@@ -1,9 +1,8 @@
 // import React, { useState, useEffect } from "react";
 import React from 'react';
 import '../Modal/Modal.css'
-import { Link } from 'react-router-dom';
-
 import Auth from '../../utils/auth';
+
 // import { saveVendorIds, getSavedVendorIds } from '../../utils/localStorage';
 import { SAVE_VENDOR } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
