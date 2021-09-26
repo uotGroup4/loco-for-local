@@ -16,38 +16,44 @@ const Modal = ({ closeModal, vendor }) => {
     };
 
     // ================= SAVE VENDOR START ================
-    console.log(vendor)
-
-    const [saveVendor, { error }] = useMutation(SAVE_VENDOR);
+    const [saveVendor] = useMutation(SAVE_VENDOR);
 
     // function to handle saving vendor to db
-    const handleSaveVendor = async (vendor) => {
+    const handleSaveVendor = async () => {
 
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-        console.log(`auth token ${token}`);
-        if (!token) {
-            return false;
-        }
         try {
-            //Update all properties
-            const { data } = await saveVendor({
-                variables: {
-                    input: {
-                        _id: vendor._id,
-                        title: vendor.title,
-                        website: vendor.website,
-                        image: vendor.image,
-                        location: vendor.location
-                    }
-                }
+            await saveVendor({
+                variables: { input: vendor._id }
             });
-
-            if (error) {
-                throw new Error('something went wrong');
-            }
-        } catch (err) {
-            console.error(err);
         }
+        catch (e) {
+            console.log(e);
+        }
+        // const token = Auth.loggedIn() ? Auth.getToken() : null;
+        // console.log(`auth token ${token}`);
+        // if (!token) {
+        //     return false;
+        // }
+        // try {
+        //     //Update all properties
+        //     const { data } = await saveVendor({
+        //         variables: {
+        //             input: {
+        //                 _id: vendor._id,
+        //                 title: vendor.title,
+        //                 website: vendor.website,
+        //                 image: vendor.image,
+        //                 location: vendor.location
+        //             }
+        //         }
+        //     });
+
+        //     if (error) {
+        //         throw new Error('something went wrong');
+        //     }
+        // } catch (err) {
+        //     console.error(err);
+        // }
     }
     // ================= SAVE VENDOR END ================
 
@@ -68,15 +74,8 @@ const Modal = ({ closeModal, vendor }) => {
                     <button onClick={() => closeModal(false)} id="cancelBtn">Cancel</button>
                     {Auth.loggedIn() && (
                         <button
-                            // disabled={savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)}
                             className="save-favs-btn"
-                            // disabled={disable}
                             onClick={() => handleSaveClick()}>
-
-                            {/* {savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)
-                                ? 'This vendor has already been saved'
-                                : 'Add to Favourites'
-                            } */}
                             Add to Favourites
                         </button>
                     )}

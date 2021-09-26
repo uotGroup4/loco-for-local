@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const url =  'mongodb+srv://saidhadad:Superstr0ng@loco-for-local.fumoj.mongodb.net/loco-for-local?retryWrites=true&w=majority'
+const url =  'mongodb+srv://saidhadad:Superstr0ng@loco-for-local.fumoj.mongodb.net/loco-for-local?retryWrites=true&w=majority'
 
 
 mongoose.connect(
