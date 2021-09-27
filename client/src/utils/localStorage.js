@@ -1,12 +1,12 @@
-export const getSavedVendorIds = () => {
-    let savedVendorIds = localStorage.getItem('saved_vendors')
+export const getSavedVendorId = () => {
+    const savedVendorIds = localStorage.getItem('saved_vendors')
         ? JSON.parse(localStorage.getItem('saved_vendors'))
         : [];
-    console.log(savedVendorIds + "this is the one")
+    console.log({savedVendorIds} + "this is the one")
     return savedVendorIds;
 };
 
-export const saveVendorIds = (vendorIdArr) => {
+export const saveVendorId = (vendorIdArr) => {
     if (vendorIdArr.length) {
         localStorage.setItem('saved_vendors', JSON.stringify(vendorIdArr));
     } else {
