@@ -15,8 +15,8 @@ const typeDefs = gql `
     type Vendor {
         _id: ID
         title: String
-        image: String
         website: String
+        image: String
         location: String
         coordinates: [String]
     }
@@ -33,12 +33,11 @@ const typeDefs = gql `
 
     input vendorInput {
         _id: String
-        title: String
-        website: String
+        title: String!
+        website: String!
         image: String
-        coordinates: [String]
-        location: String
-        _typename: String
+        location: String!
+        coordinates: [String]!
     }
 
     input shopInput {
@@ -65,12 +64,15 @@ const typeDefs = gql `
         shop(_id: ID!): Shop
     }
 
-    type Mutation {
+    type Mutation { 
+        # user manipulation mutations
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addVendor(title: String!, location: String!, website: String!, image: String, coordinates: String!): Vendor
-        addShop(title: String!, location: String!, website: String!, image: String, description: String, coordinates: String!): Vendor
+        # shop and vendor manipulation mutations
+        addVendor(input: vendorInput!): Vendor
+        addShop(title: String!, location: String!, website: String!, image: String, description: String, coordinates: String!): Shop
         saveVendor(input: vendorInput!): User
+        # remove from db mutations
         removeVendor(input: vendorInput!): User
         saveShop(input: shopInput!): User
         removeShop(shopId: String!): User

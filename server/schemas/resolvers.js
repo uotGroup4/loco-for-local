@@ -73,11 +73,12 @@ const resolvers = {
         },
 
         // Add a vendor to the database
-        // addVendor: async (parent, args) => {
-        //     const vendor = await Vendor.create(args);
+        addVendor: async (parent, args) => {
+            console.log(args.input)
+            // const vendor = await Vendor.create(args);
 
-        //     return { vendor };
-        // },
+            // return { vendor };
+        },
 
         // save a vendor to user favourites
         saveVendor: async (parent, { input }, context) => {
