@@ -2,7 +2,6 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Vendor, Shop } = require('../models');
 const { signToken } = require('../utils/auth');
 
-
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
@@ -61,7 +60,6 @@ const resolvers = {
                 throw new AuthenticationError('Incorrect credentials');
             }
             const correctPw = await user.isCorrectPassword(password);
-            console.log("correctp is " + correctPw)
 
             if (!correctPw) {
                 console.log('correct password')
@@ -69,15 +67,26 @@ const resolvers = {
             }
 
             const token = signToken(user);
+            console.log(token)
             return { token, user };
+        },
+
+        // Remove user from database
+        deleteUser: async (parent, {_id}) => {
+            const removeuser = await User.deleteOne(_id)
+            return { removeuser }
         },
 
         // Add a vendor to the database
         addVendor: async (parent, args) => {
-            console.log(args.input)
-            // const vendor = await Vendor.create(args);
+            const vendor = await Vendor.create(args.input);
+            return { vendor };
+        },
 
-            // return { vendor };
+        // Remove a vendor from the database
+        deleteVendor: async(parent, {_id}) => {
+            const removevendor = await Vendor.deleteOne({_id})
+            return { removevendor }
         },
 
         // save a vendor to user favourites
@@ -85,31 +94,32 @@ const resolvers = {
             if (context.user) {
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { savedVendors: input } },
+                    { $push: { savedVendor: input } },
                     { new: true }
                 );
-
-                //updatedUser.savedVendors = [{ title: vendor.title }]
                 return updatedUser;
             }
-
             throw new AuthenticationError('You need to be logged in!');
         },
 
+        // remove vendor from user favorites
         removeVendor: async (parent, { input }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { savedVendors: input } },
+                    { $pull: { savedVendor: input } },
                     { new: true, runValidators: true }
                 );
-
                 return updatedUser;
             }
-
             throw new AuthenticationError('You need to be logged in!')
         },
 
+        // Add shop to the Database
+        addShop: async (parent, args) => {
+            const shop = await Shop.create(args.input);
+            return { shop };
+        },
         // save shop to user favourites
         saveShop: async (parent, { input }, context) => {
             if (context.user) {
@@ -123,6 +133,7 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
+        // remove shop from user favourites
         removeShop: async (parent, { shopId }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(

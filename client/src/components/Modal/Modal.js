@@ -18,42 +18,49 @@ const Modal = ({ closeModal, vendor }) => {
     // ================= SAVE VENDOR START ================
     const [saveVendor] = useMutation(SAVE_VENDOR);
 
+
     // function to handle saving vendor to db
     const handleSaveVendor = async () => {
 
         try {
             await saveVendor({
-                variables: { input: vendor._id }
+                variables: { 
+                    input: {
+                        _id: vendor._id,
+                        title: vendor.title,
+                        website: vendor.website,
+                        image: vendor.image,
+                        location: vendor.location,
+                        coordinates: vendor.coordinates
+                    }
+                }
             });
         }
         catch (e) {
             console.log(e);
         }
-        // const token = Auth.loggedIn() ? Auth.getToken() : null;
-        // console.log(`auth token ${token}`);
-        // if (!token) {
-        //     return false;
-        // }
-        // try {
-        //     //Update all properties
-        //     const { data } = await saveVendor({
-        //         variables: {
-        //             input: {
-        //                 _id: vendor._id,
-        //                 title: vendor.title,
-        //                 website: vendor.website,
-        //                 image: vendor.image,
-        //                 location: vendor.location
-        //             }
-        //         }
-        //     });
-
-        //     if (error) {
-        //         throw new Error('something went wrong');
-        //     }
-        // } catch (err) {
-        //     console.error(err);
-        // }
+    //     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    //     console.log(`auth token ${token}`);
+    //     if (!token) {
+    //         return false;
+    //     }
+    //     try {
+    //         //Update all properties
+    //         const { data } = await saveVendor({
+    //             variables: {
+    //                 input: {
+    //                     _id: vendor._id,
+    //                     title: vendor.title,
+    //                     website: vendor.website,
+    //                     image: vendor.image,
+    //                     location: vendor.location,
+    //                     coordinates: vendor.coordinates
+    //                 }
+    //             }
+    //         });
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
     }
     // ================= SAVE VENDOR END ================
 

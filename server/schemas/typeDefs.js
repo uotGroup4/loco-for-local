@@ -41,12 +41,13 @@ const typeDefs = gql `
     }
 
     input shopInput {
-        shopId: String
-        title: String
-        website: String
-        image: String
-        description: String
-        coordinates: [String]
+        _id: String
+        title: String!
+        website: String!
+        image: String!
+        description: String!
+        location: String!
+        coordinates: [String]!
     }
 
     type Auth {
@@ -70,17 +71,17 @@ const typeDefs = gql `
         addUser(username: String!, email: String!, password: String!): Auth
         # shop and vendor manipulation mutations
         addVendor(input: vendorInput!): Vendor
-        addShop(title: String!, location: String!, website: String!, image: String, description: String, coordinates: String!): Shop
-        saveVendor(input: vendorInput!): User
-        # remove from db mutations
+        addShop(input: shopInput!): Shop
         removeVendor(input: vendorInput!): User
-        saveShop(input: shopInput!): User
         removeShop(shopId: String!): User
+        saveVendor(input: vendorInput!): User
+        saveShop(input: shopInput!): User
+        # remove from db mutations
+        deleteVendor(_id: ID!): Vendor
+        deleteShop(_id: ID!): Shop
+        deleteUser(_id: ID!): User
     }
 `;
-// deleteVendor: Vendor
-// addShop: Shop
-// Should addVendor/Shop be the same thing with a button to select what type of vendor? (Stretch goal)
 
 //export typeDefs
 module.exports = typeDefs;
