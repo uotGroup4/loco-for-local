@@ -94,7 +94,7 @@ const resolvers = {
             if (context.user) {
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { savedVendor: input } },
+                    { $push: { savedVendors: input } },
                     { new: true }
                 );
                 return updatedUser;
@@ -105,9 +105,9 @@ const resolvers = {
         // remove vendor from user favorites
         removeVendor: async (parent, { input }, context) => {
             if (context.user) {
-                const updatedUser = await User.findByIdAndUpdate(
+                const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { savedVendor: input } },
+                    { $pull: { savedVendors: input }},
                     { new: true, runValidators: true }
                 );
                 return updatedUser;

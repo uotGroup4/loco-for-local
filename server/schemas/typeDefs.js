@@ -71,10 +71,11 @@ const typeDefs = gql `
         addUser(username: String!, email: String!, password: String!): Auth
         # shop and vendor manipulation mutations
         addVendor(input: vendorInput!): Vendor
-        addShop(input: shopInput!): Shop
-        removeVendor(input: vendorInput!): User
-        removeShop(shopId: String!): User
         saveVendor(input: vendorInput!): User
+        removeVendor(input: vendorInput!): User
+
+        addShop(input: shopInput!): Shop
+        removeShop(shopId: String!): User
         saveShop(input: shopInput!): User
         # remove from db mutations
         deleteVendor(_id: ID!): Vendor
