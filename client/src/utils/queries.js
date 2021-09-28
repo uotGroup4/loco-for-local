@@ -102,6 +102,7 @@ export const GET_ME = gql`
                 website
                 image
                 location
+                coordinates
             }
         }
     }

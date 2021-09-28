@@ -105,7 +105,7 @@ const resolvers = {
         // remove vendor from user favorites
         removeVendor: async (parent, { input }, context) => {
             if (context.user) {
-                const updatedUser = await User.findOneAndUpdate(
+                const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
                     { $pull: { savedVendor: input } },
                     { new: true, runValidators: true }
