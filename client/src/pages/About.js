@@ -15,7 +15,7 @@ const About = () => {
                         Hello and welcome. Thank you for visiting and using our app! We hope this app will help you find amazing local vendors as you travel across the world.
                 </p>
                     <p>If you have a vendor you know of that deserves to be on this app, please
-                    <a href="mailto:uoftgroup4@gmail.com">
+                    <a href="mailto:locoforlocalapp@gmail.com">
                             EMAIL US!
                     </a>
                     </p>
