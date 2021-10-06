@@ -4,25 +4,14 @@ import Auth from '../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
 import { REMOVE_VENDOR } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
+import { removeVendorId } from '../utils/localStorage';
 
 const Dashboard = (vendor) => {
 
-    console.log(`dashboard ${vendor}`);
-    // const { username: userParam } = useParams();
     const { loading, data } = useQuery(GET_ME);
     const [removeVendor, { error }] = useMutation(REMOVE_VENDOR);
-
-    // const vendor = data?.vendors || [];
-
     const userData = data?.me || {};
-    console.log(userData);
 
-    // redirect to personal profile page if username is yours
-    // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    //     return <Redirect to="/dashboard" />;
-    // }
-
-    // if data isn't here yet, say loading
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -39,12 +28,11 @@ const Dashboard = (vendor) => {
     // funciton to accept vendors _id value as param and delete vendor from user db
     const handleRemoveVendor = async (vendor) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+        console.log(vendor)
         if (!token) {
             return false;
         }
 
-        console.log(`removing vendor ${vendor}`);
         try {
             const { data } = await removeVendor({
                 variables: {
@@ -53,15 +41,17 @@ const Dashboard = (vendor) => {
                         title: vendor.title,
                         website: vendor.website,
                         image: vendor.image,
-                        location: vendor.location
+                        location: vendor.location,
+                        coordinates: vendor.coordinates
                     }
                 }
             });
 
-            // console.log("vendor data:", data);
             if (error) {
                 throw new Error('Something went wrong');
             }
+            // upon success, remove book's id from localStorage
+        removeVendorId(vendor._id);
         } catch (err) {
             console.error(err);
         }
@@ -77,6 +67,7 @@ const Dashboard = (vendor) => {
 
             <div className="dashboard-cards">
                 {userData.savedVendors.map((vendor) => {
+                    console.log(vendor)
                     return (
                         <div className="dashboard-card" key={vendor.vendorId}>
                             {vendor.image ? <img src={vendor.image} alt={`${vendor.title}`} /> : null}

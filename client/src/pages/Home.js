@@ -68,12 +68,14 @@ const Home = () => {
 
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_VENDORS);
+    console.log(data)
 
     //for the modal set show
     const [openModal, setOpenModal] = useState(false);
 
     // get vendor data out of query's response
     const vendors = data?.vendors || [];
+    console.log(vendors)
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
@@ -98,8 +100,6 @@ const Home = () => {
                     center={center}
                     options={options}
                     onLoad={onMapLoad}
-                // resetBoundsOnResize={true} //to resize the map without changing integrity
-
                 >
                     {/* embbed markers inside maps component */}
                     {vendors.map((vendor) => (

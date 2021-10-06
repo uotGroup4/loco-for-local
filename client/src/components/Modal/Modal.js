@@ -1,51 +1,60 @@
-// import React, { useState, useEffect } from "react";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Modal/Modal.css'
-import { Link } from 'react-router-dom';
-
 import Auth from '../../utils/auth';
+
 // import { saveVendorIds, getSavedVendorIds } from '../../utils/localStorage';
 import { SAVE_VENDOR } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
+// import function to save to local storage
+import { saveVendorId, getSavedVendorId  } from '../../utils/localStorage'
+
+
+// initialize modal function
 const Modal = ({ closeModal, vendor }) => {
+
+    // create state to hold saved bookId values
+    const [savedVendorId, setSavedVendorId] = useState(getSavedVendorId());
+
+    const [saveVendor] = useMutation(SAVE_VENDOR);
+
+    // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
+    // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
+    useEffect(() => {
+        return () => saveVendorId(savedVendorId);
+    });
+
 
     // handle save to favourites button click
     const handleSaveClick = async (event) => {
         handleSaveVendor(vendor);
-        closeModal(false);
     };
 
     // ================= SAVE VENDOR START ================
-    console.log(vendor)
-
-    const [saveVendor, { error }] = useMutation(SAVE_VENDOR);
 
     // function to handle saving vendor to db
-    const handleSaveVendor = async (vendor) => {
+    const handleSaveVendor = async () => {
 
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-        console.log(`auth token ${token}`);
         if (!token) {
             return false;
         }
         try {
             //Update all properties
-            const { data } = await saveVendor({
+            await saveVendor({
                 variables: {
                     input: {
                         _id: vendor._id,
                         title: vendor.title,
                         website: vendor.website,
                         image: vendor.image,
-                        location: vendor.location
+                        location: vendor.location,
+                        coordinates: vendor.coordinates
                     }
                 }
             });
-
-            if (error) {
-                throw new Error('something went wrong');
-            }
+            // if vendor saves to users account save vendorid to state
+            setSavedVendorId([...savedVendorId, vendor._id]);
         } catch (err) {
             console.error(err);
         }
@@ -69,15 +78,8 @@ const Modal = ({ closeModal, vendor }) => {
                     <button onClick={() => closeModal(false)} id="cancelBtn">Cancel</button>
                     {Auth.loggedIn() && (
                         <button
-                            // disabled={savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)}
                             className="save-favs-btn"
-                            // disabled={disable}
                             onClick={() => handleSaveClick()}>
-
-                            {/* {savedVendorIds?.some((savedVendorId) => savedVendorId === vendor.vendorId)
-                                ? 'This vendor has already been saved'
-                                : 'Add to Favourites'
-                            } */}
                             Add to Favourites
                         </button>
                     )}
