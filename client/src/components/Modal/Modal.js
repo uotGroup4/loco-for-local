@@ -7,7 +7,7 @@ import { SAVE_VENDOR } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 // import function to save to local storage
-import { saveVendorId, getSavedVendorId  } from '../../utils/localStorage'
+import { saveVendorId, getSavedVendorId } from '../../utils/localStorage'
 
 
 // initialize modal function
@@ -55,6 +55,7 @@ const Modal = ({ closeModal, vendor }) => {
             });
             // if vendor saves to users account save vendorid to state
             setSavedVendorId([...savedVendorId, vendor._id]);
+            closeModal(false);
         } catch (err) {
             console.error(err);
         }
@@ -78,9 +79,12 @@ const Modal = ({ closeModal, vendor }) => {
                     <button onClick={() => closeModal(false)} id="cancelBtn">Cancel</button>
                     {Auth.loggedIn() && (
                         <button
+                            disabled={savedVendorId?.some((savedVendorId) => savedVendorId === vendor._id)}
                             className="save-favs-btn"
                             onClick={() => handleSaveClick()}>
-                            Add to Favourites
+                            {savedVendorId?.some((savedVendorId) => savedVendorId === vendor._id)
+                                ? 'Already saved!'
+                                : 'Save this vendor!'}
                         </button>
                     )}
                 </div>

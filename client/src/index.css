@@ -2,7 +2,8 @@
 .container {
 	margin:auto;
 	max-width: 90%;
-	height: auto;
+	/* height: auto; */
+	min-height: 70vh;
 }
 
 * {
